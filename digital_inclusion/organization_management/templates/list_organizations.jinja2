@@ -1,0 +1,35 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+{% for org in organizations %}
+    <div>
+        <h2>{{org.name}}</h2>
+        <dl>
+            <dt>
+            description
+            </dt>
+            <dd>{{org.description}}</dd>
+            <dt>
+            website
+            </dt>
+            <dd>{{org.website}}</dd>
+            <dt>
+            contact name
+            </dt>
+            <dd>{{org.contact_name}}</dd>
+            <dt>
+            contact phone
+            </dt>
+            <dd>{{org.contact_phone}}</dd>
+            <dt>
+            key employees
+            </dt>
+            <dd>{{org.key_employees}}</dd>
+            <dt>
+            logo url
+            </dt>
+            <dd>{{org.logo_url}}</dd>
+        </dl>
+    </div>
+{% endfor %}
+{% endblock content %}

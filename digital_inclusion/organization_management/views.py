@@ -1,17 +1,17 @@
 from django.shortcuts import render
 from django.http.request import HttpRequest
-
-
+from django.views.decorators.http import require_http_methods, require_GET
+from organization_management.models import Organization
 # Create your views here.
 
+
+@require_GET
 def list_organization(request: HttpRequest):
-    pass
+    organizations = Organization.objects.all()
+    context = {'organizations': organizations}
+    return render(request=request, template_name="list_organizations.jinja2", context=context)
 
-
-def showcase_organization(request: HttpRequest):
-    pass
-
-
+@require_http_methods(['GET', 'POST'])
 def add_organization(request: HttpRequest):
     if request.method == "GET":
         return render(request=request, template_name="create_organization.jinja2")
@@ -20,4 +20,12 @@ def add_organization(request: HttpRequest):
 
 
 def view_organization(request: HttpRequest):
+    pass
+
+
+def flag_organization(request: HttpRequest):
+    pass
+
+
+def edit_organization(request: HttpRequest):
     pass
