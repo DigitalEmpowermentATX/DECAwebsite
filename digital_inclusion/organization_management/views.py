@@ -30,10 +30,15 @@ def view_organization(request: HttpRequest, pk=None):
     context = {'organization': organization}
     return render(request=request, template_name="view_organization.jinja2", context=context)
 
+@require_http_methods(['GET', 'POST'])
+def edit_organization(request: HttpRequest, pk=None):
+    organization = get_object_or_404(Organization, pk=pk)
+    if request.method == "POST":
+        edit_form = AddOrganizationForm(request.POST, instance=organization)
+        if edit_form.is_valid():
+            organization = edit_form.save()
+            return redirect('view_organization', pk=organization.pk)
+    elif request.method == "GET":
+        edit_form = AddOrganizationForm(instance=organization)
+    return render(request=request, template_name="edit_organization.jinja2", context={'form': edit_form, 'organization': organization})
 
-def flag_organization(request: HttpRequest):
-    pass
-
-
-def edit_organization(request: HttpRequest):
-    pass
