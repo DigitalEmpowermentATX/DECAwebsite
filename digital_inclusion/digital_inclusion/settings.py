@@ -25,7 +25,7 @@ SECRET_KEY = '8a!*u9-u%^q96g@#si_v#q)t097r$i20pp1*g@wlg!+gx1p*0c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django.local']
+ALLOWED_HOSTS = ['django.local', 'django.dry']
 
 
 # Application definition
@@ -133,5 +133,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 AUTH_USER_MODEL = "user_management.User"

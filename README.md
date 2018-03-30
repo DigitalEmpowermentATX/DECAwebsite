@@ -6,11 +6,17 @@ A website that delivers information about digital inclusion training, events, an
 If you want an environment that is similar to the production environment on the server, you can use Nanobox!
 Nanobox will setup the database, python dependencies and networking for you. 
 ### Downloading Nanobox
+It is highly recommended that you use the VirtualBox version of Nanobox
 Download Nanobox from https://nanobox.io
-### Running Nanobox
+### Local Development
+#### Running Nanobox
 Head to the project directory
 ```bash
 cd digital_inclusion
+```
+If you are using Windows, it is recommended that you switch the file-system used by nanobox to native
+```bash
+nanobox configure set mount-type native
 ```
 You will need to add the local dns
 ```bash
@@ -28,3 +34,24 @@ Run the application
 ```bash
 nanobox run python manage.py runserver 0.0.0.0:8000
 ```
+You should be able to access the website from http://django.local:8000
+### Deployment
+#### Local Deployment (dry-run)
+Head to the project directory
+```bash
+cd digital_inclusion
+```
+If you are using Windows, it is recommended that you switch the file-system used by nanobox to native
+```bash
+nanobox configure set mount-type native
+```
+You will need to add the dry-run dns
+```bash
+nanobox dns add dry-run django.dry
+```
+Deploy application
+```bash
+nanobox deploy dry-run
+```
+The app should be available at http://django.dry
+

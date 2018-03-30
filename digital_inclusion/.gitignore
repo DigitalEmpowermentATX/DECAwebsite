@@ -100,3 +100,5 @@ ENV/
 
 components/
 static/*
+
+di-ve/
