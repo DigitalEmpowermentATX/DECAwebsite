@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http.request import HttpRequest
 from django.views.decorators.http import require_http_methods, require_GET
 from organization_management.models import Organization
@@ -11,6 +11,7 @@ def list_organization(request: HttpRequest):
     context = {'organizations': organizations}
     return render(request=request, template_name="list_organizations.jinja2", context=context)
 
+
 @require_http_methods(['GET', 'POST'])
 def add_organization(request: HttpRequest):
     if request.method == "GET":
@@ -19,8 +20,10 @@ def add_organization(request: HttpRequest):
         pass
 
 
-def view_organization(request: HttpRequest):
-    pass
+def view_organization(request: HttpRequest, pk=None):
+    organization = get_object_or_404(Organization, pk=pk)
+    context = {'organization': organization}
+    return render(request=request, template_name="view_organization.jinja2", context=context)    
 
 
 def flag_organization(request: HttpRequest):
