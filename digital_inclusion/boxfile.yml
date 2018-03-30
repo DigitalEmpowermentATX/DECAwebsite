@@ -1,0 +1,23 @@
+run.config:
+  engine: python
+  engine.config:
+    runtime: python-3.6
+  build_triggers:
+    - requirements.txt
+  extra_packages:
+    - nginx
+  fs_watch: true
+deploy.config:
+  extra_steps:
+      - python3 manage.py collectstatic --noinput --clear
+  before_live:
+    web.app:
+      - python manage.py migrate
+web.app:
+  start: 
+    nginx: nginx -c /app/nginx.conf
+    django: gunicorn -c /app/gunicorn.py digital_inclusion.wsgi
+  routes:
+    - '/'
+data.db:
+  image: nanobox/postgresql:9.5

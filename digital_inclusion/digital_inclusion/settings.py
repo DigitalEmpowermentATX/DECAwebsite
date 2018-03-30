@@ -25,7 +25,7 @@ SECRET_KEY = '8a!*u9-u%^q96g@#si_v#q)t097r$i20pp1*g@wlg!+gx1p*0c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django.local']
 
 
 # Application definition
@@ -76,13 +76,24 @@ WSGI_APPLICATION = 'digital_inclusion.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.environ.get('DATA_DB_HOST', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'gonano',
+            'USER': os.environ.get('DATA_DB_USER'),
+            'PASSWORD': os.environ.get('DATA_DB_PASS'),
+            'HOST': os.environ.get('DATA_DB_HOST'),
+            'PORT': '',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
