@@ -7,6 +7,6 @@
         "--max-line-length=120"
     ],
     "files.associations": {
-        "*.jinja2": "jinja"
+        "*.jinja2": "html"
     }
 }
