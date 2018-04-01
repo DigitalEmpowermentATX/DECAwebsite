@@ -25,7 +25,7 @@ SECRET_KEY = '8a!*u9-u%^q96g@#si_v#q)t097r$i20pp1*g@wlg!+gx1p*0c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django.local', 'django.dry']
+ALLOWED_HOSTS = ['django.local', 'django.dry', 'deca.nanoapp.io']
 
 
 # Application definition

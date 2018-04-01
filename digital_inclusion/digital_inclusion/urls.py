@@ -22,6 +22,6 @@ from main import urls as main_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("org/", include('organization_management.urls')),
+    path("org/", include('organization_management.urls', namespace='orgs')),
     path("accounts/", include('user_management.urls')),
 ] + main_urls.urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
