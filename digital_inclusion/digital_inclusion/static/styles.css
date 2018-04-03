@@ -13,6 +13,7 @@ body {
 .logo-section {
   margin-right: 110px;
 }
+
 @media only screen and (max-width: 991px) {
   .logo-section {
     margin-bottom: 30px;
@@ -100,6 +101,22 @@ button.search-button:hover {
   background-color:#afbeca;
 }
 
+.deca-dark-button {
+  background-color: #003a5c;
+  color: #e4e8ec;
+}
+
+.deca-light-button {
+  background-color: #afbeca;
+  color: #003a5c;
+}
+
+.deca-register {
+  padding: 15px;
+  margin-bottom: 3vh;
+  font-weight: bold;
+}
+
 /*Header*/
 .carousel-item {
   height: 65vh;
@@ -137,7 +154,21 @@ button.search-button:hover {
   text-align: center;
 }
 
-.card-button {
-  background-color: #003a5c;
-  color: #e4e8ec;
+/*Form*/
+.formtitle {
+  padding: 2%;
+  text-align: center;
+}
+
+.additional-services {
+  margin-top: 10px;
+}
+
+.remove-service, .remove-user {
+  font-weight: bold;
+  color:red;
+}
+
+.error {
+  color: red;
 }

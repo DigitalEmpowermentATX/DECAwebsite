@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles.css') }}">
+
+    <title>DECA</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg extra-margin">
+      <div class="row input-group">
+        <div class="col-md-4">
+          <img class="banner-img" src="{{ url_for('static',filename='banner_1024.png') }}" />
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search...">
+            <button class="btn-outline-secondary search-button" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div class="organization-login">
+            <a class="nav-link" href="#">Log In</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg" style="background-color:#003a5c;">
+       <ul class="nav navbar-nav mx-auto">
+         <li class="nav-item">
+           <a class="nav-link" href="#">Organizations</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#">About</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#">Map</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#">Calendar</a>
+         </li>
+       </ul>
+     </nav>
+     <div class="container">
+       <h1 class="formtitle">Register your Organization</h1>
+       <form id="registerForm" method="POST">
+          <div class="form-group row">
+            <label for="orgName" class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="orgName" name="orgName" placeholder="Organization Name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Description:</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="5" name="description" id="description" placeholder="Description of your organization"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="websiteURL" class="col-sm-2 col-form-label">Website URL:</label>
+            <div class="col-sm-10">
+              <input type="url" class="form-control" id="websiteURL" name="websiteURL" placeholder="Link to your website">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="contactName1" class="col-sm-2 col-form-label">Contact Name:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="contactName1" name="contactName1" placeholder="Name of Contact">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="phoneNumber" class="col-sm-2 col-form-label">Contact Phone:</label>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Contact Email:</label>
+            <div class="col-sm-10">
+              <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group row">
+           <label for="uploadImage" class= "col-sm-2 col-form-label">Upload a logo:</label>
+           <div class="col-sm-10">
+             <input type="file" class="form-control-file" id="uploadImage">
+           </div>
+         </div>
+          <div class="services-wrapper">
+            <div class="form-group row">
+              <label class= "col-sm-2 col-form-label">Services: </label>
+              <div class="col-sm-10">
+                <select class="form-control service-group" id="services1" name="services1">
+                  <option value="default" selected disabled hidden>Choose a Service</option>
+                  <option>Example Service 1</option>
+                  <option>Example Service 2</option>
+                  <option>Example Service 3</option>
+                  <option>Example Service 4</option>
+                  <option>Example Service 5</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class= "col-sm-2 col-form-label">
+            </div>
+            <div class="col-lg-10">
+              <button type="button" class="btn deca-dark-button add-service">Add Services</button>
+            </div>
+          </div>
+          <div class="users-wrapper">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">User 1:</label>
+              <div class="col">
+                <input type="text" name="user1" id="user1" class="form-control user-group" placeholder="Username">
+              </div>
+              <div class="col">
+                <input type="text" name="phrase1" id="phrase1" class="form-control" placeholder="Question">
+              </div>
+              <div class="col">
+                <input type="password" name="response1" id="response1" class="form-control" placeholder="Response">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class= "col-sm-2 col-form-label">
+            </div>
+            <div class="col-lg-10">
+              <button type="button" class="btn deca-dark-button add-user">Add Users</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <button type="submit" class="btn deca-register deca-light-button">Register</button>
+        </div>
+    </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+    <script src="{{ url_for('static',filename='form.js') }}"/></script>
+  </body>
+</html>
