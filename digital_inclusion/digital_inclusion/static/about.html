@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles.css') }}">
+
+    <title>DECA</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg extra-margin">
+      <div class="row input-group">
+        <div class="col-md-4">
+          <img class="banner-img" src="{{ url_for('static',filename='banner_1024.png') }}" />
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search...">
+            <button class="btn-outline-secondary search-button" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div class="organization-login">
+            <a class="nav-link" href="#">Log In</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg" style="background-color:#003a5c;">
+       <ul class="nav navbar-nav mx-auto">
+         <li class="nav-item">
+           <a class="nav-link" href="#">Organizations</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#">About</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#">Map</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="#">Calendar</a>
+         </li>
+       </ul>
+     </nav>
+     <header>
+      
+     </header>
+
+     <!-- Page Content -->
+     <div class="container">
+
+       <div class="purpose-section">
+         <h1 class="my-4">About Digital Empowerment Community</h1>
+         <div class="content">
+          <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+            <div class="field-items">
+            <div class="field-item even" property="content:encoded">
+              <p>The Digital Empowerment Community of Austin (DECA) is a network of non-profits, educational instititions, and other stakeholders working together to improve our community's ability to participate in digital society, making a more digitally inclusive Austin.</p>
+              <h3>What is Digital Inclusion?</h3>
+              <p>Digital inclusion is the ability of individuals and groups to equally access and use information and communication technologies afordably, efficiently, and reliably along with digital training, resources, and skills needed to fully participate in  a digital society.</p>
+              <h3>How We Started</h3>
+              <p>DECA was officially convened on Thursday, October 29th, 2015 when more than 80 community stakeholders convened in the Asian American Resource Center to collaborate and brainstorm on challenges and opportunities in connecting our community. This meeting commenced Phase I of the co-creation strategy that developed a list of <a href="http://austintexas.gov/page/digital-inclusion-strategic-plan">short, medium, and long-term initiatives</a> that could have the highest impact on digital inclusion.</p>
+              <p>Four working groups were convened to work towards problem identification and solution generation and implementation. The four working groups are linked at the bottom of the page.</p>
+              <h3>Where We Are Today</h3>
+              <p>The Train the Trainer working group has since evolved into what is now the Capacity working group. Throughout its evolution, the working group fostered a sense of community ownership and leadership with the effort of bringing awareness to digital inequities in Austin and opportunities that support digital inclusion.</p>
+              <h3>Latest Information</h3>
+              <ul>
+                <li>Join our Google Group - <a href="mailto:Digital-Equity-ATX@googlegroups.com">Digital-Equity-ATX@googlegroups.com</a></li>
+                <li>Subscribe to our Digital Inclusion Newsletter– <a href="http://www.eepurl.com/UUKMv">www.eepurl.com/UUKMv</a></li>
+                <li>Attend our monthly DECA Meetings– <a href="mailto:jesse.rodriguez@austintexas.gov?subject=DECA%20Meeting%20Question&amp;body=Please%20include%20your%20name%20and%20contact%20information.">Contact Jesse Rodriguez</a>  for info on the next meeting</li>
+                <li>Attend community events that promote digital inclusion
+                  <ul>
+                    <li><strong>Greater Austin STEM Networking Forum</strong> (April 11, 5:30-6pm, @ ACC Highland)</li>
+                    <li><strong>Maker Faire Austin</strong> (May 5-6, 10am-6pm, @ Thinkery)</li>
+                    <li><strong>ATX Hack4Change</strong> (June 1-3, @St. Edward's University)</li>
+                  </ul>
+                </li>
+              </ul>
+              <h3>Resources and Information</h3>
+              <p><a href="https://airtable.com/shrZ9dEcKmoWYafBc">Capacity Working Group</a></p>
+              <p><a href="https://airtable.com/shrLxIh7MVsW04V2a">Curriculum Standards Working Group</a></p>
+              <p><a href="https://airtable.com/shrRsvhUL58km676i">Standard Client Survey Working Group </a></p>
+              <p><a href="https://airtable.com/shrfZDYVQcMglxm2c">TechHire Working Group</a></p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     </div>
+     <!-- /.container -->
+
+     <!-- Footer -->
+     <footer class="py-5 bg-dark">
+       <div class="container">
+         <p class="m-0 text-center text-white">Copyright &copy; Digital Empowerment Community of Austin 2018.</p>
+       </div>
+       <!-- /.container -->
+     </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

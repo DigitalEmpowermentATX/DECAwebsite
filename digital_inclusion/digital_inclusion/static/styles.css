@@ -111,6 +111,11 @@ button.search-button:hover {
   color: #003a5c;
 }
 
+.deca-remove-button {
+  background-color: red;
+  color: #e4e8ec;
+}
+
 .deca-register {
   padding: 15px;
   margin-bottom: 3vh;
@@ -171,4 +176,71 @@ button.search-button:hover {
 
 .error {
   color: red;
+}
+
+/*Showcase*/
+
+.list-services-wrapper {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.org-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.org-wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  width: auto;
+  height: auto
+}
+
+.org-wrapper ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.org-border {
+  border-style: solid;
+  border-width: 2px;
+}
+
+.tag-details {
+  float: right;
+  margin-right: 0;
+  margin-top: 3%;
+}
+
+@media only screen and (max-width: 991px) {
+  .extra-margin {
+    margin-left: 36px;
+  }
+
+  .services-wrapper {
+    display: inline;
+    float: none;
+    margin: auto;
+  }
+
+  .list-services-wrapper {
+    margin-top: 5%;
+    margin-bottom: 0%;
+  }
+
+  .center-row {
+    display: flex;
+    justify-content: center;
+  }
+
+  .center-row ol {
+    list-style-position: inside;
+  }
+
+  .tag-details {
+    margin-bottom: 5%;
+  }
 }
