@@ -2,3 +2,5 @@ Django==2.0.3
 psycopg2==2.7.4
 gunicorn==19.7.1
 django-widgets-improved==1.5.0
+Pillow==5.1.0
+django-phonenumber-field==2.0.0

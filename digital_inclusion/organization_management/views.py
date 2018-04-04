@@ -17,10 +17,10 @@ def list_organization(request: HttpRequest):
 @require_http_methods(['GET', 'POST'])
 def add_organization(request: HttpRequest):
     if request.method == "POST":
-        add_form = AddOrganizationForm(request.POST)
+        add_form = AddOrganizationForm(request.POST, request.FILES)
         if add_form.is_valid():
             organization = add_form.save()
-            return redirect('view_organization', pk=organization.pk)
+            return redirect('orgs:view', pk=organization.pk)
     elif request.method == "GET":
         add_form = AddOrganizationForm()
     return render(request=request, template_name="create_organization.jinja2", context={'form': add_form})
@@ -39,7 +39,7 @@ def edit_organization(request: HttpRequest, pk=None):
         edit_form = AddOrganizationForm(request.POST, instance=organization)
         if edit_form.is_valid():
             organization = edit_form.save()
-            return redirect('view_organization', pk=organization.pk)
+            return redirect('orgs:view', pk=organization.pk)
     elif request.method == "GET":
         edit_form = AddOrganizationForm(instance=organization)
     return render(request=request, template_name="edit_organization.jinja2", context={'form': edit_form, 'organization': organization})

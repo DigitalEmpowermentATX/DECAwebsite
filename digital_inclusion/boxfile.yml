@@ -19,5 +19,10 @@ web.app:
     django: gunicorn -c /app/gunicorn.py digital_inclusion.wsgi
   routes:
     - '/'
+  network_dirs:
+    data.uploads:
+      - /public/uploads
 data.db:
   image: nanobox/postgresql:9.5
+data.uploads:
+  image: nanobox/unfs:0.9

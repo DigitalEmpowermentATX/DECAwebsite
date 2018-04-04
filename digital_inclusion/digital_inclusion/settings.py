@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'phonenumber_field',
     'main',
     'organization_management',
     'user_management',
@@ -136,9 +137,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+PHONENUMBER_DEFAULT_REGION = 'US'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/media/')
+MEDIA_URL = '/media/'
 AUTH_USER_MODEL = "user_management.User"
