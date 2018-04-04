@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'phonenumber_field',
+    'import_export',
     'main',
     'organization_management',
     'user_management',
@@ -138,6 +139,9 @@ USE_TZ = True
 
 
 PHONENUMBER_DEFAULT_REGION = 'US'
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 

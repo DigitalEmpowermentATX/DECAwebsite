@@ -1,6 +1,90 @@
 {% extends "base.jinja2" %}
-
+{% load static %}
 {% block content %}
+ <!-- Page Content -->
+ <div class="container">
+        <div class="row" style="margin-top: 2%">
+          <div class="col-md-4">
+            <div class="row center-row">
+              <h2>Organization Overview</h2>
+            </div>
+            <div class="row center-row">
+              <div class="list-services-wrapper">
+                <h3>List of Services</h3>
+                <ol>
+                    {% for service in services %}
+                  <li>{{service.type}}</li>                  
+                  {% endfor %}
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+              <div class="org-details org-border" style="background-image: url({% static 'images/pic2.jpg' %})">
+                <div class="row">
+                <div class="org-wrapper">
+                  <h3>{{organization.name}},</h3>
+                  <h4><a href="{{organization.website}}">{{organization.website}}</a>,</h4>
+                  <h4>{{organization.address}},</h4>
+                  <ul>
+                    <li>Employee 1</li>
+                    <li>Employee 2</li>
+                    <li>Employee 3</li>
+                  </ul>
+                </div>
+             </div>
+           </div>
+           <div class="center-row">
+             <div class="row tag-details">
+               <div class="tag-border">
+                 <button type="button" class="btn deca-dark-button" data-toggle="modal" data-target="#report">Report for Review</button>
+                 <!-- Modal -->
+                   <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="reportLabel" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+                         <div class="modal-header">
+                           <h5 class="modal-title" id="reportLabel">Report an Issue</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                           </button>
+                         </div>
+                         <form id="modalForm" method="POST">
+                           <div class="modal-body">
+                             <div class="form-group row">
+                               <label class= "col-sm-2 col-form-label">Issue: </label>
+                               <div class="col-sm-10">
+                                 <select class="form-control" id="issue" name="issue">
+                                   <option value="default" selected disabled hidden>Choose an Issue</option>
+                                   <option>Out of Date</option>
+                                   <option>Inappropiate</option>
+                                   <option value="Other">Other</option>
+                                 </select>
+                               </div>
+                             </div>
+                             <div id="other">
+                               <div class="form-group row">
+                                 <label class= "col-sm-2 col-form-label">Other Issue: </label>
+                                 <div class="col-sm-10">
+                                   <input type="text" class="form-control" name="other-issue" id="other-issue"/>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                           <div class="modal-footer">
+                             <button type="button" class="btn deca-remove-button" data-dismiss="modal">Close</button>
+                             <button type="submit" class="btn deca-dark-button">Submit</button>
+                           </div>
+                         </form>
+                       </div>
+                     </div>
+                   </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+      </div>
+      <!-- /.container -->
     <div>
         <h2>{{organization.name}}</h2>
         <dl>
@@ -30,4 +114,5 @@
             <dd>{{organization.logo_url}}</dd>
         </dl>
     </div>
+    <script src="{% static 'js/showcase.js' %}"></script>
 {% endblock content %}

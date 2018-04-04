@@ -28,7 +28,8 @@ def add_organization(request: HttpRequest):
 
 def view_organization(request: HttpRequest, pk=None):
     organization = get_object_or_404(Organization, pk=pk)
-    context = {'organization': organization}
+
+    context = {'organization': organization, 'services': organization.services.all()}
     return render(request=request, template_name="view_organization.jinja2", context=context)
 
 @login_required()

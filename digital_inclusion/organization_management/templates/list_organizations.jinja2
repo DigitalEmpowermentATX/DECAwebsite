@@ -1,35 +1,61 @@
 {% extends "base.jinja2" %}
 
 {% block content %}
-{% for org in organizations %}
-    <div>
-        <h2>{{org.name}}</h2>
-        <dl>
-            <dt>
-            description
-            </dt>
-            <dd>{{org.description}}</dd>
-            <dt>
-            website
-            </dt>
-            <dd>{{org.website}}</dd>
-            <dt>
-            contact name
-            </dt>
-            <dd>{{org.contact_name}}</dd>
-            <dt>
-            contact phone
-            </dt>
-            <dd>{{org.contact_phone}}</dd>
-            <dt>
-            key employees
-            </dt>
-            <dd>{{org.key_employees}}</dd>
-            <dt>
-            logo url
-            </dt>
-            <dd>{{org.logo_url}}</dd>
-        </dl>
-    </div>
-{% endfor %}
+      <div class="row p-4">
+        <div class="col-md-1"></div>  
+        <div class="col-md-10">
+        <h1 class="ml-2">Organizations</h1>
+          <div id="load"></div>
+          <div class="table" data-example-id="simple-responsive-table">
+            <div class="table-responsive">
+              <!-- Table -->
+              <table class="table table-striped" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Organization</th>
+                    <th>Address</th>
+                    <th>Services Offered</th>
+                    <th>Upcoming Event</th>
+                    <th>Contact</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                {% for organization in organizations %}
+                  <tr>
+                    <td>{{organization.name}}</td>
+                    <td>{{organization.address}}</td>
+                    <td>
+                        {% for service in organization.services.all %}
+                            {% if forloop.last %}
+                                {{service.type}}
+                            {% else %}
+                                {{service.type}},
+                            {% endif %}
+                        {% empty %}
+                            None
+                        {% endfor %}
+                    </td>
+                    <td>No upcoming event</td>
+                    <td>{{organization.contact_phone}}</td>
+                  </tr>                  
+                {% endfor %}
+                </tbody>
+              </table> 
+            </div> <!-- end of <div class = "table-responsive"> -->
+          </div> <!-- end of <div class = "table"> -->
+        </div> <!-- end of <div class = "col-md-10"> -->
+      </div> <!-- end of <div class = "row"> -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#myTable').DataTable(); 
+        });
+        </script>
+        
+        <script type="text/javascript">
+        $(window).load(function() {
+            $("#load").fadeOut();
+            document.getElementById('myTable').style.visibility="visible";
+        });
+        </script>
 {% endblock content %}

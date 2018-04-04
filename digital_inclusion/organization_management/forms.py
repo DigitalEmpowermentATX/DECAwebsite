@@ -11,17 +11,18 @@ class AddOrganizationForm(forms.ModelForm):
     class Meta:
         model = Organization
         fields = ['name', 'description', 'website', 'contact_name',
-                  'contact_email', 'contact_phone', 'logo_file', 'services']
+                  'contact_email', 'contact_phone', 'logo_file', 'services', 'address']
         labels = {
             'website': 'Website URL',
             'logo_file': 'Upload a logo'
         }
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Organization Name'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Organization name'}),
+            'address': forms.TextInput(attrs={'placeholder': 'Organization address'}),
             'description': forms.Textarea(attrs={'placeholder': "Description of your organization", 'rows': 5}),
             'website': forms.TextInput(attrs={'placeholder': 'Link to your website', 'type': 'url'}),
-            'contact_name': forms.TextInput(attrs={'placeholder': 'Name of Contact'}),
-            'contact_phone': PhoneNumberInternationalFallbackWidget(attrs={'placeholder': 'Phone Number of Contact', 'type': 'tel'}),
-            'contact_email': forms.TextInput(attrs={'placeholder': 'Email of Contact', 'type': 'email'}),
+            'contact_name': forms.TextInput(attrs={'placeholder': 'Name of contact'}),
+            'contact_phone': PhoneNumberInternationalFallbackWidget(attrs={'placeholder': 'Phone number of contact', 'type': 'tel'}),
+            'contact_email': forms.TextInput(attrs={'placeholder': 'Email of contact', 'type': 'email'}),
             'services': forms.SelectMultiple(attrs={'title':'Choose all that apply...'}),
         }

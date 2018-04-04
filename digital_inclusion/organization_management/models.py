@@ -7,13 +7,14 @@ from user_management.models import User
 
 class Service(models.Model):
     type = models.CharField(max_length=256)
-    description = models.TextField(max_length=512)    
+    description = models.TextField(max_length=512)
     def __str__(self):
         return str(self.type)
 
 # Create your models here.
 class Organization(models.Model):
     name = models.CharField(max_length=512)
+    address = models.CharField(max_length=512)
     description = models.TextField(max_length=2048)
     website = models.URLField(max_length=512)
     contact_name = models.CharField(max_length=128)
