@@ -22,7 +22,7 @@
                 
                 <tbody>
                 {% for organization in organizations %}
-                  <tr>
+                  <tr onclick="window.location='{{organization.pk}}/';">
                     <td>{{organization.name}}</td>
                     <td>{{organization.address}}</td>
                     <td>
