@@ -20,19 +20,24 @@
             </div>
           </div>
           <div class="col-md-8">
-              <div class="org-details org-border" style="background-image: url({% static 'images/pic2.jpg' %})">
-                <div class="row">
-                <div class="org-wrapper">
-                  <h3>{{organization.name}},</h3>
-                  <h4><a href="{{organization.website}}">{{organization.website}}</a>,</h4>
-                  <h4>{{organization.address}},</h4>
-                  <ul>
-                    <li>Employee 1</li>
-                    <li>Employee 2</li>
-                    <li>Employee 3</li>
-                  </ul>
-                </div>
-             </div>
+                <div class="row justify-content-end center-row">
+                        <div class="edit-showcase">
+                          <button type="button" class="btn deca-light-button">Edit</button>
+                        </div>
+                      </div>
+                      <div class="org-details org-border" style="background-image: url(/media/{{organization.logo_file}})">
+                        <div class="row">
+                          <div class="org-wrapper">
+                                <h3>{{organization.name}},</h3>
+                                <h4><a href="{{organization.website}}">{{organization.website}}</a>,</h4>
+                                <h4>{{organization.address}},</h4>
+                            <ul>
+                              <li>Employee 1</li>
+                              <li>Employee 2</li>
+                              <li>Employee 3</li>
+                            </ul>
+                          </div>
+                       </div>
            </div>
            <div class="center-row">
              <div class="row tag-details">
@@ -85,34 +90,5 @@
        </div>
       </div>
       <!-- /.container -->
-    <div>
-        <h2>{{organization.name}}</h2>
-        <dl>
-            <dt>
-            description
-            </dt>
-            <dd>{{organization.description}}</dd>
-            <dt>
-            website
-            </dt>
-            <dd>{{organization.website}}</dd>
-            <dt>
-            contact name
-            </dt>
-            <dd>{{organization.contact_name}}</dd>
-            <dt>
-            contact phone
-            </dt>
-            <dd>{{organization.contact_phone}}</dd>
-            <dt>
-            key employees
-            </dt>
-            <dd>{{organization.key_employees}}</dd>
-            <dt>
-            logo url
-            </dt>
-            <dd>{{organization.logo_url}}</dd>
-        </dl>
-    </div>
     <script src="{% static 'js/showcase.js' %}"></script>
 {% endblock content %}
