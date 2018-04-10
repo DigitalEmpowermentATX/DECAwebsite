@@ -7,5 +7,6 @@ from main import views
 
 urlpatterns = [
     url(r'about/$', views.about, name="about"),
+    url(r'map/$', views.map, name="map"),
     url(r'^$', views.index, name="index"),
 ]

@@ -7,3 +7,6 @@ def index(request: HttpRequest):
 
 def about(request: HttpRequest):
     return render(request, template_name="about.jinja2")
+
+def map(request: HttpRequest):
+    return render(request, template_name="map.jinja2")
