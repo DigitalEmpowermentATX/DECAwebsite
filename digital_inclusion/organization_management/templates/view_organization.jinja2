@@ -13,7 +13,7 @@
                 <h3>List of Services</h3>
                 <ol>
                     {% for service in services %}
-                  <li>{{service.type}}</li>                  
+                  <li>{{service.type}}</li>
                   {% endfor %}
                 </ol>
               </div>
@@ -29,7 +29,7 @@
                         <div class="row">
                           <div class="org-wrapper">
                                 <h3>{{organization.name}},</h3>
-                                <h4><a href="{{organization.website}}">{{organization.website}}</a>,</h4>
+                                <h4><a href="{{organization.website}}" target="_blank">{{organization.website}}</a>,</h4>
                                 <h4>{{organization.address}},</h4>
                             <ul>
                               <li>Employee 1</li>
@@ -53,7 +53,9 @@
                              <span aria-hidden="true">&times;</span>
                            </button>
                          </div>
-                         <form id="modalForm" method="POST">
+                         <form id="modalForm" method="POST" action="/flag/submit/">
+                             {% csrf_token %}
+                             <input type="hidden" name="org_id" value="{{ organization.id}}">
                            <div class="modal-body">
                              <div class="form-group row">
                                <label class= "col-sm-2 col-form-label">Issue: </label>
@@ -68,9 +70,10 @@
                              </div>
                              <div id="other">
                                <div class="form-group row">
-                                 <label class= "col-sm-2 col-form-label">Other Issue: </label>
+                                 <label class= "col-sm-2 col-form-label">Details: </label>
                                  <div class="col-sm-10">
-                                   <input type="text" class="form-control" name="other-issue" id="other-issue"/>
+{#                                   <input type="textarea" class="form-control" name="other-issue" id="other-issue"/>#}
+                                     <textarea name="other-issue" class="form-control" cols="30" rows="10"></textarea>
                                  </div>
                                </div>
                              </div>

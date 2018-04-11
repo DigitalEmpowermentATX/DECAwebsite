@@ -1,34 +1,78 @@
-{% extends "base.jinja2" %} 
-{% load static %} 
+{% extends "base.jinja2" %}
+{% load static %}
 {% block content %}
-<div class="container">
-    <style>
-        #map {
-            height: 80vh;
-            width: 100%;
-        }
-    </style>
-    <div id="map"></div>
-    <script>
-        var map, infoWindow;
-        function initMap() {
-            var atx = { lat: 30.267, lng: -97.743 };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: atx
-            });
-            var marker = new google.maps.Marker({
-                position: atx,
-                map: map
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4Gkn1pvJSIDhIzZSh_zFqlwbp0NMByA0&callback=initMap">
-    </script>
+    <div class="container">
+        <style>
+            #map {
+                height: 80vh;
+                width: 100%;
+            }
+        </style>
+
+        <div id="map"></div>
+        <script>
+            var map, infoWindow;
+            String.prototype.format = function () {
+                var i = 0, args = arguments;
+                return this.replace(/{}/g, function () {
+                    return typeof args[i] != 'undefined' ? args[i++] : '';
+                });
+            };
+            var dat = [
+                {% for org in orgs %}
+                    {
+                        id: "{{ org.id }}",
+                        name: "{{ org.name }}",
+                        description: "{{ org.description }}",
+                        address: "{{ org.address }}",
+                        website: "{{ org.website }}",
+                        lat: {{ org.latitude }},
+                        lng: {{ org.longitude }}
+                    },
+                {% endfor %}
+            ]
 
 
+            var markers = []
 
-</div>
-<!-- /.container -->
+            var contentTemplate = "<div class='markerContent'>" +
+                "<h2 class='markerTitle'>{}</h2> " +
+                "<p class='markerDescription'>{}</p> " +
+                "<a class='websiteMarker' href='{}' target='_blank'>Website</a>" +
+                "<br>" +
+                "<a class='profileMarker' href='/org/{}/' target='_blank'>Showcase</a>" +
+                "<br>" +
+                "<a href='https://www.google.com/maps?q={}' target='_blank'>Directions</a></div>";
+
+            function initMap() {
+                var atx = {lat: 30.267, lng: -97.743};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12,
+                    center: atx
+                });
+                for (var i = 0; i < dat.length; i++) {
+                    var org = dat[i];
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentTemplate.format(org["name"], org["description"], org["website"], org["id"], org["address"])
+                    });
+                    var marker = new google.maps.Marker({
+                        position: {lat: org["lat"], lng: org["lng"]},
+                        title: org["name"],
+                        map: map
+                    });
+                    marker.addListener('click', function () {
+                        infowindow.open(map, marker);
+                    });
+                    markers.push(marker)
+                }
+
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ gmaps_api_key }}&callback=initMap">
+        </script>
+
+
+    </div>
+    <!-- /.container -->
 
 {% endblock %}

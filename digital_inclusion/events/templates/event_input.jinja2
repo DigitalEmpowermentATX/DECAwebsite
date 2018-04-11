@@ -1,0 +1,293 @@
+{% extends "base.jinja2" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h1 class="formtitle">Register your Organization</h1>
+        <form action="" method="POST">
+             {% csrf_token %}
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.organization.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.organization class+="form-control" %}
+                </div>
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">{{ form.organization.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.name.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.name class+="form-control" %}
+                </div>
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">{{ form.name.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.time.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.time class+="form-control" %}
+                </div>
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">{{ form.time.help_text }}</small>
+                {% endif %}
+            </div>
+        <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.description.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.description class+="form-control" %}
+                </div>
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">{{ form.description.help_text }}</small>
+                {% endif %}
+            </div>
+        <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.mask_profile.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.mask_profile class+="form-control" %}
+                </div>
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">{{ form.mask_profile.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.contact_name.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.contact_name class+="form-control" %}
+                </div>
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">{{ form.contact_name.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end" style="text-align:center">
+                <div class="col-sm-10">
+                    <button type="submit" class="form-control btn deca-register deca-light-button">Register</button>
+                </div>
+            </div>
+        </form>
+
+        {#        <form id="registerForm" method="POST" enctype="multipart/form-data" action="{% url "orgs:add" %}">#}
+        {#            {% csrf_token %}#}
+        {#            {% for hidden_field in form.hidden_fields %}#}
+        {#                {{ hidden_field }}#}
+        {#            {% endfor %}#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.name.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.name class+="form-control" %}#}
+        {#                </div>#}
+        {#                {% if form.name.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.name.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.name.errors %}#}
+        {#                    {% for error in form.name.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="form-group row">#}
+        {#                    <div class="col-sm-2 col-form-label">#}
+        {#                        {{ form.address.label_tag }}#}
+        {#                    </div>#}
+        {#                    <div class="col-sm-10">#}
+        {#                        {% render_field form.address class+="form-control" %}#}
+        {#                    </div>#}
+        {#                    {% if form.address.help_text %}#}
+        {#                        <small class="form-text text-muted">{{ form.address.help_text }}</small>#}
+        {#                    {% endif %}#}
+        {#                </div>#}
+        {#                <div class="row justify-content-end">#}
+        {#                    {% if form.address.errors %}#}
+        {#                        {% for error in form.address.errors %}#}
+        {#                            <div class="col-sm-10">#}
+        {#                                <div class="alert alert-danger" role="alert">#}
+        {#                                    {{ error|escape }}#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        {% endfor %}#}
+        {#                    {% endif %}#}
+        {#                </div>#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.description.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.description class+="form-control" %}#}
+        {#                </div>#}
+        {#                {% if form.description.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.description.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.description.errors %}#}
+        {#                    {% for error in form.description.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.website.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.website class+="form-control" %}#}
+        {#                </div>#}
+        {#                {% if form.website.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.website.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.website.errors %}#}
+        {#                    {% for error in form.website.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.contact_name.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.contact_name class+="form-control" %}#}
+        {#                </div>#}
+        {#                {% if form.contact_name.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.contact_name.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.contact_name.errors %}#}
+        {#                    {% for error in form.contact_name.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.contact_phone.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.contact_phone class+="form-control" %}#}
+        {#                </div>#}
+        {#                {% if form.contact_phone.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.contact_phone.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.contact_phone.errors %}#}
+        {#                    {% for error in form.contact_phone.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.contact_email.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.contact_email class+="form-control" %}#}
+        {#                </div>#}
+        {#                {% if form.contact_email.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.contact_email.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.contact_email.errors %}#}
+        {#                    {% for error in form.contact_email.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.logo_file.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.logo_file class+="form-control-file" %}#}
+        {#                </div>#}
+        {#                {% if form.logo_file.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.logo_file.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.logo_file.errors %}#}
+        {#                    {% for error in form.logo_file.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="form-group row">#}
+        {#                <div class="col-sm-2 col-form-label">#}
+        {#                    {{ form.services.label_tag }}#}
+        {#                </div>#}
+        {#                <div class="col-sm-10">#}
+        {#                    {% render_field form.services class+="form-control selectpicker" %}#}
+        {#                </div>#}
+        {#                {% if form.services.help_text %}#}
+        {#                    <small class="form-text text-muted">{{ form.services.help_text }}</small>#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end">#}
+        {#                {% if form.services.errors %}#}
+        {#                    {% for error in form.services.errors %}#}
+        {#                        <div class="col-sm-10">#}
+        {#                            <div class="alert alert-danger" role="alert">#}
+        {#                                {{ error|escape }}#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    {% endfor %}#}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#            <div class="row justify-content-end" style="text-align:center">#}
+        {#                <div class="col-sm-10">#}
+        {#                    <button type="submit" class="form-control btn deca-register deca-light-button">Add</button>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#    </div>#}
+        {##}
+        {#    </form>#}
+{% endblock content %}

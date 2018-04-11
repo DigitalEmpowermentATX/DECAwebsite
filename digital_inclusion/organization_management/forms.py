@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.postgres import forms as pgsql_forms
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
 from organization_management.models import Organization
 

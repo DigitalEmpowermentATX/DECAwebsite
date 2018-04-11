@@ -24,4 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("org/", include('organization_management.urls', namespace='orgs')),
     path("accounts/", include('user_management.urls')),
+    path("flag/", include('flagging.urls')),
+    path("events/", include('events.urls')),
 ] + main_urls.urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
