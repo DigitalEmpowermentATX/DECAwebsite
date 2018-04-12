@@ -37,7 +37,7 @@
                         {% endfor %}
                     </td>
                     <td>No upcoming event</td>
-                    <td>{{organization.contact_phone}}</td>
+                    <td>{{organization.contact_phone.as_national}}</td>
                   </tr>                  
                 {% endfor %}
                 </tbody>
