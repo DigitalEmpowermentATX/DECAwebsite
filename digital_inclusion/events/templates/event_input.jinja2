@@ -13,8 +13,19 @@
                 <div class="col-sm-10">
                     {% render_field form.organization class+="form-control" %}
                 </div>
-                {% if form.name.help_text %}
+                {% if form.organization.help_text %}
                     <small class="form-text text-muted">{{ form.organization.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.organization.errors %}
+                    {% for error in form.organization.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                    {{error}}
+                            </div>
+                        </div>
+                    {% endfor %}
                 {% endif %}
             </div>
             <div class="form-group row">
@@ -28,6 +39,17 @@
                     <small class="form-text text-muted">{{ form.name.help_text }}</small>
                 {% endif %}
             </div>
+            <div class="row justify-content-end">
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <div class="col-sm-10">
+                                <div class="alert alert-danger" role="alert">
+                                    {{error}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             <div class="form-group row">
                 <div class="col-sm-2 col-form-label">
                     {{ form.time.label_tag }}
@@ -35,10 +57,21 @@
                 <div class="col-sm-10">
                     {% render_field form.time class+="form-control" %}
                 </div>
-                {% if form.name.help_text %}
+                {% if form.time.help_text %}
                     <small class="form-text text-muted">{{ form.time.help_text }}</small>
                 {% endif %}
             </div>
+            <div class="row justify-content-end">
+                    {% if form.time.errors %}
+                        {% for error in form.time.errors %}
+                            <div class="col-sm-10">
+                                <div class="alert alert-danger" role="alert">
+                                        {{error}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
         <div class="form-group row">
                 <div class="col-sm-2 col-form-label">
                     {{ form.description.label_tag }}
@@ -46,10 +79,21 @@
                 <div class="col-sm-10">
                     {% render_field form.description class+="form-control" %}
                 </div>
-                {% if form.name.help_text %}
+                {% if form.description.help_text %}
                     <small class="form-text text-muted">{{ form.description.help_text }}</small>
                 {% endif %}
             </div>
+            <div class="row justify-content-end">
+                    {% if form.description.errors %}
+                        {% for error in form.description.errors %}
+                            <div class="col-sm-10">
+                                <div class="alert alert-danger" role="alert">
+                                        {{error}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
         <div class="form-group row">
                 <div class="col-sm-2 col-form-label">
                     {{ form.mask_profile.label_tag }}
@@ -57,10 +101,21 @@
                 <div class="col-sm-10">
                     {% render_field form.mask_profile class+="form-control" %}
                 </div>
-                {% if form.name.help_text %}
+                {% if form.mask_profile.help_text %}
                     <small class="form-text text-muted">{{ form.mask_profile.help_text }}</small>
                 {% endif %}
             </div>
+            <div class="row justify-content-end">
+                    {% if form.mask_profile.errors %}
+                        {% for error in form.mask_profile.errors %}
+                            <div class="col-sm-10">
+                                <div class="alert alert-danger" role="alert">
+                                        {{error}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             <div class="form-group row">
                 <div class="col-sm-2 col-form-label">
                     {{ form.contact_name.label_tag }}
@@ -68,10 +123,21 @@
                 <div class="col-sm-10">
                     {% render_field form.contact_name class+="form-control" %}
                 </div>
-                {% if form.name.help_text %}
+                {% if form.contact_name.help_text %}
                     <small class="form-text text-muted">{{ form.contact_name.help_text }}</small>
                 {% endif %}
             </div>
+            <div class="row justify-content-end">
+                    {% if form.contact_name.errors %}
+                        {% for error in form.contact_name.errors %}
+                            <div class="col-sm-10">
+                                <div class="alert alert-danger" role="alert">
+                                        {{error}}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             <div class="row justify-content-end" style="text-align:center">
                 <div class="col-sm-10">
                     <button type="submit" class="form-control btn deca-register deca-light-button">Register</button>
