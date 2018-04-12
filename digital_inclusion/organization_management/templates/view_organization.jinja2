@@ -53,7 +53,7 @@
                              <span aria-hidden="true">&times;</span>
                            </button>
                          </div>
-                         <form id="modalForm" method="POST" action="/flag/submit/">
+                         <form id="modalForm" method="POST" action="{% url 'flags:flag' %}">
                              {% csrf_token %}
                              <input type="hidden" name="organization" value="{{ organization.id}}">
                            <div class="modal-body">
@@ -73,7 +73,7 @@
                                  <label class= "col-sm-2 col-form-label">Details: </label>
                                  <div class="col-sm-10">
 {#                                   <input type="textarea" class="form-control" name="other-issue" id="other-issue"/>#}
-                                     <textarea name="other-issue" class="form-control" cols="30" rows="10"></textarea>
+                                     <textarea name="other" class="form-control" cols="30" rows="10"></textarea>
                                  </div>
                                </div>
                              </div>
