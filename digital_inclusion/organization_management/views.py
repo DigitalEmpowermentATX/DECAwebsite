@@ -41,9 +41,6 @@ def add_organization(request: HttpRequest):
             organization.longitude = lng
             organization.save()
             return redirect('orgs:view', pk=organization.pk)
-        else:
-            # return error page
-            pass
     elif request.method == "GET":
         add_form = AddOrganizationForm()
     return render(request=request, template_name="create_organization.jinja2", context={'form': add_form})

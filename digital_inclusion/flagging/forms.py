@@ -9,7 +9,6 @@ class FlagForm(forms.ModelForm):
     #     contact_phone = self.cleaned_data['contact_phone']
     class Meta:
         model = Flag
-        fields = ["issue", "other", "org_id"]
-    org_id = forms.IntegerField()
+        fields = ["issue", "other", "organization"]    
     issue = forms.CharField(max_length=100)
     other = forms.CharField(max_length=2048, required=False)

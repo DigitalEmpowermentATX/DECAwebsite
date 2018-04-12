@@ -55,12 +55,12 @@
                          </div>
                          <form id="modalForm" method="POST" action="/flag/submit/">
                              {% csrf_token %}
-                             <input type="hidden" name="org_id" value="{{ organization.id}}">
+                             <input type="hidden" name="organization" value="{{ organization.id}}">
                            <div class="modal-body">
                              <div class="form-group row">
                                <label class= "col-sm-2 col-form-label">Issue: </label>
                                <div class="col-sm-10">
-                                 <select class="form-control" id="issue" name="issue">
+                                 <select class="form-control" id="issue" required name="issue">
                                    <option value="default" selected disabled hidden>Choose an Issue</option>
                                    <option>Out of Date</option>
                                    <option>Inappropiate</option>

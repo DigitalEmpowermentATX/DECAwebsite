@@ -10,11 +10,7 @@ def flag(request: HttpRequest):
             # print(flag_form)
             flag_form.save()
         else:
-            print(flag_form)
-            print(flag_form.org_id)
-            print(flag_form.other)
-            print(flag_form.issue)
-            print(flag_form.errors)
+            pass
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
     else:
         return Http404()
