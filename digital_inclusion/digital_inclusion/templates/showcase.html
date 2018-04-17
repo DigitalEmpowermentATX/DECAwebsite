@@ -51,97 +51,121 @@
      </nav>
 
      <!-- Page Content -->
-     <div class="container">
-       <div class="row" style="margin-top: 2%">
-         <div class="col-md-4">
-           <div class="row center-row">
-             <h2>Organization Overview</h2>
+     <div class="showcase-wrapper" style="background-image:url('{{ url_for('static',filename='banner_1024.png') }}')">
+       <div class="row">
+
+       </div>
+       <div class="container" style="margin-top: 50px;">
+         <div class="row">
+           <div class="col-md-8">
+             <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title">{{org_name}}</h2>
+                  <p>Phone Number: {{phone_number}}</p>
+                  <p>Address: {{address}}</p>
+                  <p>
+                    {{description}}
+                  </p>
+                </div>
+              </div>
            </div>
-           <div class="row center-row">
-             <div class="list-services-wrapper">
-               <h3>List of Services</h3>
-               <ol>
-                 <li>Service 1</li>
-                 <li>Service 2</li>
-                 <li>Service 3</li>
-                 <li>Service 4</li>
-                 <li>Service 5</li>
-               </ol>
+           <div class="col-md-4">
+             <div class="card">
+               <iframe src="https://6343261.fls.doubleclick.net/activityi;src=6343261;type=landi0;cat=ada-f0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=8597350347665.655?" width="" height=""></iframe>
              </div>
            </div>
          </div>
-         <div class="col-md-8">
-           <div class="row justify-content-end center-row">
-             <div class="edit-showcase">
-               <button type="button" class="btn deca-light-button">Edit</button>
+         <div class="row">
+           <div class="col-md-8">
+             <div class="card">
+               <div class="card-body">
+                 <h4>Services Offered</h4>
+                 <ul>
+                   {% for service in services%}
+                      <hr />
+                      <li>
+                        {{service.name}}
+                        <ul>
+                          {% for detail in service.details%}
+                            <li>
+                                {{detail}}
+                            </li>
+                          {%endfor%}
+                        </ul>
+                      </li>
+                   {%endfor%}
+                 </ul>
+              </div>
              </div>
            </div>
-           <div class="org-details org-border" style="background-image: url({{ url_for('static',filename='pic2.jpg') }})">
-             <div class="row">
-               <div class="org-wrapper">
-                 <h3>Organization name,</h3>
-                 <h4>Contact Info,</h4>
-                 <h4>Address,</h4>
+           <div class="col-md-4">
+             <div class="card">
+               <iframe src="https://6343261.fls.doubleclick.net/activityi;src=6343261;type=landi0;cat=ada-f0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=8597350347665.655?" width="" height=""></iframe>
+             </div>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-md-8">
+             <div class="card">
+               <div class="card-body">
+                 <h4>Employee Information</h4>
                  <ul>
-                   <li>Employee 1</li>
-                   <li>Employee 2</li>
-                   <li>Employee 3</li>
+                   {% for employee in employees%}
+                      <hr />
+                      <li>
+                        Name: {{employee.name}}
+                      </li>
+                      <li>
+                        Phone: {{employee.phone}}
+                      </li>
+                      <li>
+                        Email: {{employee.email}}
+                      </li>
+                   {%endfor%}
                  </ul>
                </div>
-            </div>
-          </div>
-          <div class="center-row">
-            <div class="row tag-details">
-              <div class="tag-border">
-                <button type="button" class="btn deca-dark-button" data-toggle="modal" data-target="#report">Report for Review</button>
-                <!-- Modal -->
-                  <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="reportLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="reportLabel">Report an Issue</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form id="modalForm" method="POST">
-                          <div class="modal-body">
-                            <div class="form-group row">
-                              <label class= "col-sm-2 col-form-label">Issue: </label>
-                              <div class="col-sm-10">
-                                <select class="form-control" id="issue" name="issue">
-                                  <option value="default" selected disabled hidden>Choose an Issue</option>
-                                  <option>Out of Date</option>
-                                  <option>Inappropiate</option>
-                                  <option value="Other">Other</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div id="other">
-                              <div class="form-group row">
-                                <label class= "col-sm-2 col-form-label">Other Issue: </label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" name="other-issue" id="other-issue"/>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn deca-remove-button" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn deca-dark-button">Submit</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+             </div>
+           </div>
+           <div class="col-md-4">
+             <div class="card">
+               <div class="card-body">
+                 <h4 class="aligncenter">Hours of Operation</h4>
+                 <ul class="operating-hours">
+                   <li>
+                      Monday:
+                      <span class="alignright">{{monday}}</span>
+                   </li>
+                   <li>
+                      Tuesday:
+                      <span class="alignright">{{tuesday}}</span>
+                   </li>
+                   <li>
+                      Wednesday:
+                      <span class="alignright">{{wednesday}}</span>
+                   </li>
+                   <li>
+                      Thursday:
+                      <span class="alignright">{{thursday}}</span>
+                   </li>
+                   <li>
+                      Friday:
+                      <span class="alignright">{{friday}}</span>
+                   </li>
+                   <li>
+                      Saturday:
+                      <span class="alignright">{{saturday}}</span>
+                   </li>
+                   <li>
+                      Sunday:
+                      <span class="alignright">{{sunday}}</span>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
      </div>
-     <!-- /.container -->
-
      <!-- Footer -->
      <footer class="py-5 bg-dark">
        <div class="container">

@@ -246,3 +246,55 @@ button.search-button:hover {
     list-style-position: inside;
   }
 }
+
+.showcase-wrapper {
+  width: auto;
+  height: auto;
+  min-height: 600px;
+  background-size: 100%;
+  background-position: center top;
+  background-color: white;
+  background-repeat: no-repeat;
+}
+
+.showcase-wrapper .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-top: 50px;
+}
+
+.showcase-banner {
+  width: auto;
+  height: auto;
+  background-size: contain;
+  background-position: center top;
+  background-color: white;
+}
+
+hr {
+  margin-left: -60px;
+  margin-right: -20px;
+}
+
+.operating-hours {
+  list-style: none;
+  padding-left:0;
+  margin: 0;
+  padding: 0;
+}
+
+.operating-hours li {
+  margin-top: 10px;
+}
+
+.alignleft {
+  float: left;
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+.alignright {
+  float: right;
+}
