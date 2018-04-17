@@ -217,34 +217,8 @@ button.search-button:hover {
 }
 
 .edit-showcase {
-  margin-right: 15px;
-  margin-bottom: 15px;
-}
-
-@media only screen and (max-width: 991px) {
-  .extra-margin {
-    margin-left: 36px;
-  }
-
-  .services-wrapper {
-    display: inline;
-    float: none;
-    margin: auto;
-  }
-
-  .list-services-wrapper {
-    margin-top: 5%;
-    margin-bottom: 0%;
-  }
-
-  .center-row {
-    display: flex;
-    justify-content: center !important;
-  }
-
-  .center-row ol {
-    list-style-position: inside;
-  }
+  margin-top: 15px;
+  text-align: right;
 }
 
 .showcase-wrapper {
@@ -261,6 +235,7 @@ button.search-button:hover {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     margin-top: 50px;
+    margin-bottom: 25px;
 }
 
 .showcase-banner {
@@ -297,4 +272,44 @@ hr {
 
 .alignright {
   float: right;
+}
+
+.report-button {
+  margin-top: -50px;
+  margin-bottom: 25px;
+  text-align:center;
+}
+
+@media only screen and (max-width: 991px) {
+  .extra-margin {
+    margin-left: 36px;
+  }
+
+  .services-wrapper {
+    display: inline;
+    float: none;
+    margin: auto;
+  }
+
+  .list-services-wrapper {
+    margin-top: 5%;
+    margin-bottom: 0%;
+  }
+
+  .center-row {
+    display: flex;
+    justify-content: center !important;
+  }
+
+  .center-row ol {
+    list-style-position: inside;
+  }
+
+  .edit-showcase {
+    text-align: center;
+  }
+
+  .report-button {
+    margin-top: 0px;
+  }
 }

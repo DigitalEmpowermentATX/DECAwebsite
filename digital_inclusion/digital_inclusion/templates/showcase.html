@@ -52,9 +52,16 @@
 
      <!-- Page Content -->
      <div class="showcase-wrapper" style="background-image:url('{{ url_for('static',filename='banner_1024.png') }}')">
-       <div class="row">
-
-       </div>
+       <div class="container">
+         <div class="row">
+           <div class="col-md-8"></div>
+           <div class="col-md-4">
+             <div class="edit-showcase">
+               <button type="button" class="btn deca-light-button">Edit</button>
+             </div>
+           </div>
+         </div>
+        </div>
        <div class="container" style="margin-top: 50px;">
          <div class="row">
            <div class="col-md-8">
@@ -161,6 +168,53 @@
                    </li>
                  </ul>
                </div>
+             </div>
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-md-8">
+             <div class="report-button">
+               <button type="button" class="btn deca-dark-button" data-toggle="modal" data-target="#report">Report for Review</button>
+               <!-- Modal -->
+                 <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="reportLabel" aria-hidden="true">
+                   <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                       <div class="modal-header">
+                         <h5 class="modal-title" id="reportLabel">Report an Issue</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+                       <form id="modalForm" method="POST">
+                         <div class="modal-body">
+                           <div class="form-group row">
+                             <label class= "col-sm-2 col-form-label">Issue: </label>
+                             <div class="col-sm-10">
+                               <select class="form-control" id="issue" name="issue">
+                                 <option value="default" selected disabled hidden>Choose an Issue</option>
+                                 <option>Out of Date</option>
+                                 <option>Inappropiate</option>
+                                 <option value="Other">Other</option>
+                               </select>
+                             </div>
+                           </div>
+                           <div id="other">
+                             <div class="form-group row">
+                               <label class= "col-sm-2 col-form-label">Other Issue: </label>
+                               <div class="col-sm-10">
+                                 <input type="text" class="form-control" name="other-issue" id="other-issue"/>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="modal-footer">
+                           <button type="button" class="btn deca-remove-button" data-dismiss="modal">Close</button>
+                           <button type="submit" class="btn deca-dark-button">Submit</button>
+                         </div>
+                       </form>
+                     </div>
+                   </div>
+                 </div>
              </div>
            </div>
          </div>
