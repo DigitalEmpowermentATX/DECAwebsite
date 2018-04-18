@@ -11,15 +11,14 @@
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles.css') }}">
 
     <!-- basic js files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- js files for table sorting and pagination-->
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <!-- css for table pagination -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen">   -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" media="screen"> 
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen">  
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" media="screen"> 
 
     <title>DECA Organizations</title>
   </head>
@@ -69,6 +68,7 @@
     <div class="row">
       <div class="col-md-1"></div>  
       <div class="col-md-10">
+        <a class="btn btn-primary btn-sm" href="/add/" role="button">Add an Org</a>
         <div id="load"></div>
         <div class="table" data-example-id="simple-responsive-table">
           <div class="table-responsive">
@@ -85,9 +85,23 @@
               </thead>
               
               <tbody>
-               <!-- add code here for inside of table -->
+                <tr>
+                  <td>Austin Public Library - Pleasant Hill</td>
+                  <td>211 E William Cannon Dr 78745</td>
+                  <td>None</td>
+                  <td>No upcoming event</td>
+                  <td>512-974-3940</td>
+                </tr>
+                <tr>
+                  <td>Austin Public Library - Manchaca Road</td>
+                  <td>5500 Manchaca Rd 78745</td>
+                  <td>None</td>
+                  <td>No upcoming event</td>
+                  <td>512 974 8700</td>
+                </tr>
+                
+             
               </tbody>
-              
             </table> 
           </div> <!-- end of <div class = "table-responsive"> -->
         </div> <!-- end of <div class = "table"> -->
