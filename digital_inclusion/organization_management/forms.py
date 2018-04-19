@@ -7,8 +7,11 @@ class BranchForm(forms.ModelForm):
     more_branches = forms.BooleanField(label="Add another branch?", required=False)    
     class Meta:
         model = Branch
-        fields = ['contact_name',
-                  'contact_email', 'contact_phone', 'services', 'address']
+        fields = ['address', 'contact_name',
+                  'contact_email', 'contact_phone', 'services',  'services_other']
+        labels = {
+            'services_other': 'Other services (comma seperated)',            
+        }
         widgets = {            
             'address': forms.TextInput(attrs={'placeholder': 'Organization address'}),
             'contact_name': forms.TextInput(attrs={'placeholder': 'Name of contact'}),
