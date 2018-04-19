@@ -15,7 +15,7 @@ class Organization(models.Model):
     name = models.CharField(max_length=512)
     description = models.TextField(max_length=2048)
     website = models.URLField(max_length=512)
-    logo_file = models.ImageField(null=True)
+    logo_file = models.ImageField(null=True, help_text="Must be smaller than 4MB.")
     def __str__(self):
         return str(self.name)
 
@@ -40,11 +40,11 @@ class Branch(models.Model):
     contact_name = models.CharField(max_length=128)
     contact_phone = PhoneNumberField()
     contact_email = models.EmailField()
-    key_employees = ArrayField(models.CharField(max_length=512), null=True, blank=True)
+    key_employees = ArrayField(models.CharField(max_length=512), null=True, blank=True, help_text="Comma seperated list.")
     address = models.CharField(max_length=512)
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
     services = models.ManyToManyField(Service, related_name="organizations")
-    services_other = ArrayField(models.CharField(max_length=256), null=True, blank=True)
+    services_other = ArrayField(models.CharField(max_length=256), null=True, blank=True, help_text="Comma seperated list.")
     def __str__(self):
         return '%s -- %s' % (self.organization, self.address)
