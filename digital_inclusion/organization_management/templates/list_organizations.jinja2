@@ -4,8 +4,10 @@
       <div class="row p-4">
         <div class="col-md-1"></div>  
         <div class="col-md-10">
-        <h1 class="ml-2">Organizations</h1>
-          <div id="load"></div>
+          <div>
+            <h1 class="ml-2 pull-left">Organizations</h1>
+            <a class="mr-3 btn btn-primary pull-right btn-lg" href="{% url 'orgs:wizard' %}" role="button">Add an organization</a>
+          </div>
           <div class="table" data-example-id="simple-responsive-table">
             <div class="table-responsive">
               <!-- Table -->

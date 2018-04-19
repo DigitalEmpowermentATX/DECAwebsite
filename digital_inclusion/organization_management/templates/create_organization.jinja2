@@ -16,13 +16,21 @@
                 {% endfor %}
             {% else %}
                 {{ wizard.form  | crispy }}
-            {% endif %}    
-            <div class="row justify-content-end" style="text-align:center">
-                <div class="col-sm-10">
-                    <button type="submit" class="form-control btn deca-register deca-light-button">Next Step</button>
-                </div>
-            </div>
+            {% endif %}            
+            <button type="submit" id="submitBtn" class="form-control btn btn-block deca-register deca-light-button">Next Step</button>
+
     </div>
 
     </form>
+    <script type="text/javascript">
+        $('#registerForm input:checkbox').change(function() {
+            if (this.checked){
+                $("#submitBtn").text('Next Step');
+            }
+            else{
+                $("#submitBtn").text('Submit');
+            }
+        }).change();
+
+    </script>
 {% endblock content %}
