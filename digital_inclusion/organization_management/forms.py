@@ -32,10 +32,11 @@ class AddOrganizationForm(forms.ModelForm):
             raise forms.ValidationError("Couldn't read uploaded image")
     class Meta:
         model = Organization
-        fields = ['name', 'description', 'website', 'logo_file']
+        fields = ['name', 'description', 'website', 'logo_file', 'banner']
         labels = {
             'website': 'Website URL',
-            'logo_file': 'Upload a logo'
+            'logo_file': 'Upload a logo',
+            'banner': 'Upload a banner'
         }        
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Organization name'}),
@@ -46,5 +47,4 @@ class AddOrganizationForm(forms.ModelForm):
             'contact_phone': PhoneNumberInternationalFallbackWidget(attrs={'placeholder': 'Phone number of contact', 'type': 'tel'}),
             'contact_email': forms.TextInput(attrs={'placeholder': 'Email of contact', 'type': 'email'}),
             'services': forms.SelectMultiple(attrs={'title':'Choose all that apply...'}),
-            'logo_file': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }

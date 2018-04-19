@@ -16,6 +16,7 @@ class Organization(models.Model):
     description = models.TextField(max_length=2048)
     website = models.URLField(max_length=512)
     logo_file = models.ImageField(null=True, help_text="Must be smaller than 4MB.")
+    banner = models.ImageField(null=True, blank=True, help_text="Must be smaller than 10MB.")
     def __str__(self):
         return str(self.name)
 
