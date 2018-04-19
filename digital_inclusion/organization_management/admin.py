@@ -11,3 +11,4 @@ class OrganizationResource(resources.ModelResource):
 class OrganizationAdmin(ImportExportActionModelAdmin):
     resource_class = OrganizationResource
 admin.site.register(models.Organization, OrganizationAdmin)
+admin.site.register(models.Branch)

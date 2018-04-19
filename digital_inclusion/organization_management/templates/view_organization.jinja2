@@ -9,14 +9,16 @@
               <h2>Organization Overview</h2>
             </div>
             <div class="row center-row">
+              {% for branch in branches %}              
               <div class="list-services-wrapper">
                 <h3>List of Services</h3>
                 <ol>
-                    {% for service in services %}
+                    {% for service in branch.services.all %}
                   <li>{{service.type}}</li>
                   {% endfor %}
                 </ol>
               </div>
+              {% endfor %}
             </div>
           </div>
           <div class="col-md-8">

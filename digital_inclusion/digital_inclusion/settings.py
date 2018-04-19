@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'phonenumber_field',
     'import_export',
+    'formtools',
+    'crispy_forms',
     'main',
     'organization_management',
     'user_management',
@@ -189,3 +191,5 @@ GOOGLE_CALENDAR_CREDS = {
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/emosseri%40ut-deca.iam.gserviceaccount.com"
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
