@@ -1,6 +1,7 @@
 from django import forms
+from django.forms import inlineformset_factory, formset_factory
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
-from organization_management.models import Organization, Branch
+from organization_management.models import Organization, Branch, OpeningHours
 
 
 class BranchForm(forms.ModelForm):
@@ -8,7 +9,7 @@ class BranchForm(forms.ModelForm):
     class Meta:
         model = Branch
         fields = ['address', 'contact_name',
-                  'contact_email', 'contact_phone', 'services',  'services_other']
+                  'contact_email', 'contact_phone', 'languages', 'services', 'lab_machine_count',  'services_other', 'training_programs']
         labels = {
             'services_other': 'Other services',            
         }
@@ -18,7 +19,18 @@ class BranchForm(forms.ModelForm):
             'contact_phone': PhoneNumberInternationalFallbackWidget(attrs={'placeholder': 'Phone number of contact', 'type': 'tel'}),
             'contact_email': forms.TextInput(attrs={'placeholder': 'Email of contact', 'type': 'email'}),
             'services': forms.SelectMultiple(attrs={'title':'Choose all that apply...',  'class': 'selectpicker'}),
+            'languages': forms.SelectMultiple(attrs={'title':'Choose all that apply...',  'class': 'selectpicker'}),
+            'training_programs': forms.SelectMultiple(attrs={'title':'Choose all that apply...',  'class': 'selectpicker'}),
+            'lab_machine_count': forms.NumberInput(attrs={'placeholder': '20'}),
         }
+
+
+class OpeningHoursForm(forms.ModelForm):
+    class Meta:
+        model = OpeningHours
+        fields = ['weekday', 'from_hour', 'to_hour']
+
+HoursFormset = inlineformset_factory(Branch, OpeningHours, form=OpeningHoursForm, extra=1)
 class AddOrganizationForm(forms.ModelForm):
     # def clean_contact_phone(self):
     #     contact_phone = self.cleaned_data['contact_phone']
@@ -41,7 +53,6 @@ class AddOrganizationForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Organization name'}),
             'address': forms.TextInput(attrs={'placeholder': 'Organization address'}),
-            'description': forms.Textarea(attrs={'placeholder': "Description of your organization", 'rows': 5}),
             'website': forms.TextInput(attrs={'placeholder': 'http://example.com', 'type': 'url'}),
             'contact_name': forms.TextInput(attrs={'placeholder': 'Name of contact'}),
             'contact_phone': PhoneNumberInternationalFallbackWidget(attrs={'placeholder': 'Phone number of contact', 'type': 'tel'}),

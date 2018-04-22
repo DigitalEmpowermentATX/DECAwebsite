@@ -4,8 +4,8 @@ from django.http.response import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_GET
-from organization_management.models import Organization
-from organization_management.forms import AddOrganizationForm, BranchForm
+from organization_management.models import Organization, Branch
+from organization_management.forms import AddOrganizationForm, BranchForm, HoursFormset
 from django.conf import settings
 from django.utils import six
 from django.core.files.storage import FileSystemStorage
@@ -52,6 +52,12 @@ class OrganizationWizard(LoginRequiredMixin, SessionWizardView):
         form_list = super().get_form_list()
         return form_list
 
+    # def get_context_data(self, form, **kwargs):
+    #     context = super(OrganizationWizard, self).get_context_data(form, **kwargs)
+    #     if type(form) == BranchForm:
+    #         context["hours_form"] = HoursFormset()
+    #     return context
+        
     def done(self, form_list, **kwargs):
         for form in form_list:
             if type(form) == AddOrganizationForm:
@@ -68,10 +74,10 @@ class OrganizationWizard(LoginRequiredMixin, SessionWizardView):
 
 
 def view_organization(request: HttpRequest, pk=None):
-    organization = get_object_or_404(Organization, pk=pk)
+    branch = get_object_or_404(Branch, pk=pk)
 
-    context = {'organization': organization,
-               'branches': organization.branches.all()}
+    context = {'organization': branch.organization,
+               'branch': branch}
     return render(request=request, template_name="view_organization.jinja2", context=context)
 
 

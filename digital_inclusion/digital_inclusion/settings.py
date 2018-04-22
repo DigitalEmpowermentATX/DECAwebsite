@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'import_export',
     'formtools',
     'crispy_forms',
+    'ckeditor',
     'main',
     'organization_management',
     'user_management',
@@ -130,7 +131,7 @@ STATICFILES_FINDERS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
