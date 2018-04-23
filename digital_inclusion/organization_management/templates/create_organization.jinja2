@@ -10,13 +10,21 @@
             {% csrf_token %}
             {{ wizard.management_form | crispy }}
             {% if wizard.form.forms %}
-                {{ wizard.form.management_form | crispy }}
+                {{ wizard.form.management_form | crispy }}                
                 {% for form in wizard.form.forms %}
                     {{ form  | crispy }}
                 {% endfor %}
             {% else %}
                 {{ wizard.form  | crispy }}
-            {% endif %}            
+            {% endif %}
+            {% if hours_form %}
+                <div class="form-inline">
+                {{ hours_form.management_form | crispy }}
+                {% for form in hours_form.forms %}
+                    {{ form  | crispy }}
+                {% endfor %}
+                </div>
+            {% endif %}
             <button type="submit" id="submitBtn" class="form-control btn btn-block deca-register deca-light-button">Next Step</button>
 
     </div>
@@ -31,6 +39,15 @@
                 $("#submitBtn").text('Submit');
             }
         }).change();
-
+        $('#div_id_{{wizard.steps.step0}}-lab_machine_count').hide();
+        $('#id_{{wizard.steps.step0}}-services').on('changed.bs.select', function(event, clickedIndex, newValue, oldValue){            
+            if(newValue && this.options[clickedIndex].text.toLowerCase().includes('lab')){
+                $('#div_id_{{wizard.steps.step0}}-lab_machine_count').fadeIn("slow");
+            }
+            else if(oldValue && this.options[clickedIndex].text.toLowerCase().includes('lab')){            
+                $('#div_id_{{wizard.steps.step0}}-lab_machine_count').fadeOut("slow");
+            }
+        });
     </script>
 {% endblock content %}
+

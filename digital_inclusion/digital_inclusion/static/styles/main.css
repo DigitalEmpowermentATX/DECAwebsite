@@ -22,18 +22,19 @@ body {
 }
 
 /*NavBar*/
-.nav-item a {
+nav .nav-item a {
   color: #e4e8ec;
   font-size: 24px;
 }
 
-.nav-item {
+nav .nav-item {
   margin-left: 36px;
 }
 
-.nav-item a:hover {
+nav .nav-item a:hover {
   color: #afbeca;
 }
+
 
 /*Search Bar*/
 .search-container {
@@ -221,6 +222,9 @@ button.search-button:hover {
   margin-bottom: 15px;
 }
 
+.hours-form {
+  place-content: space-between;
+}
 
 @media only screen and (max-width: 991px) {
   .extra-margin {

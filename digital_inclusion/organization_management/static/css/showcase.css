@@ -1,0 +1,21 @@
+.carousel-item {
+    height: 45vh;
+}
+.showcase-content {
+    margin-top: -12rem;
+}
+
+.tab-content {
+    min-height: 10rem;
+}
+
+.white-background {
+    background-color: white;
+}
+
+/* .nav-item a{
+    color: black;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #003a5c;
+}  */
