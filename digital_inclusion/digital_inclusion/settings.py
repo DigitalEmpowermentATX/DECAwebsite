@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'organization_management',
     'user_management',
     'flagging',
-    'events'
+    'events',
+    'search',
 ]
 
 MIDDLEWARE = [

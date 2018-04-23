@@ -46,8 +46,16 @@
         <div class="search-container">
           <input type="text" class="search-box" placeholder="Search...">
           <button class="btn-outline-secondary search-button" type="button">
-            <i class="fa fa-search"></i>
+            <a class="fa fa-search"></a>
           </button>
+            <div class="autocomplete">
+                <ul>
+                    <li>Option1</li>
+                    <li>Option2</li>
+                    <li>Option3</li>
+                    <li>Option4</li>
+                </ul>
+            </div>
         </div>
         <div class="organization-login">
           <a class="nav-link" href="{% url 'login' %}">Log In</a>
@@ -85,6 +93,24 @@
   </footer>
     {% block scripts %}
     {% endblock scripts %}
+  <script>
+      var isDown = false;
+
+      $(".search-box").on("keyup", function(){
+          if (!isDown){
+              $(".autocomplete").slideDown({duration: 200});
+              isDown = true
+          }
+          $(".autocomplete").load("/search/autocomplete?query=" + encodeURIComponent($(this).val()))
+      })
+      $(".search-box").on("blur", function(){
+          $(".autocomplete").slideUp({duration: 200});
+          isDown = false
+      })
+      $(".search-button").click(function(){
+          window.open("/search?query=" + encodeURIComponent($(".search-box").val()))
+      })
+  </script>
 </body>
 
 </html>
