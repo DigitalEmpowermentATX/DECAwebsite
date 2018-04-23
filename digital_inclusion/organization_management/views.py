@@ -47,7 +47,6 @@ class OrganizationWizard(LoginRequiredMixin, SessionWizardView):
             keys = list(self.form_list.keys())
             index = keys.index(step) + 1
             key = "more_branches-{0}".format(index)
-            print(self.form_list)
             self.form_list[key] = BranchForm
         form_list = super().get_form_list()
         return form_list

@@ -1,0 +1,16 @@
+<ul>
+    {% for org in org_results %}
+    <li>
+        {{org.name}}
+    </li>
+    {% endfor %}
+</ul>
+
+<hr>
+<ul>
+    {% for event in event_results %}
+    <li>
+        {{event.name}}
+    </li>
+    {% endfor %}
+</ul>

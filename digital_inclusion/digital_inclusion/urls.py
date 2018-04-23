@@ -26,4 +26,5 @@ urlpatterns = [
     path("accounts/", include('user_management.urls')),
     path("flag/", include('flagging.urls', namespace='flags')),
     path("events/", include('events.urls', namespace='events')),
+    path("search/", include('search.urls', namespace='search')),
 ] + main_urls.urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

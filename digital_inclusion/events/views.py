@@ -6,6 +6,8 @@ from events.forms import EventInputForm
 from organization_management.models import Organization
 from events.models import Event
 from django.http import HttpResponseRedirect
+
+
 # Create your views here.
 
 
@@ -24,5 +26,9 @@ def add(request):
 
 def calendar(request):
     return render(request, template_name="calendar.jinja2", context={
-        "events": Event.objects.all()
+        "events": Event.objects.all(),
+        "event_widget_options": {
+            "show_header": True,
+            # "default_view": "listMonth"
+        }
     })

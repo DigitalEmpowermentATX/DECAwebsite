@@ -255,3 +255,14 @@ button.search-button:hover {
     margin-bottom: 5%;
   }
 }
+.search-container{
+  position: relative;
+}
+.autocomplete{
+  position:absolute;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, .8);
+  width:90%;
+  display:none;
+  top:45px;
+}
