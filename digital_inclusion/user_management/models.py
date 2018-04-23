@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager, User
 from django.utils.translation import ugettext_lazy as _
+from organization_management.models import Organization
 
 class MyUserManager(BaseUserManager):
     def create_user(self, username, password, **extra_fields):
@@ -64,3 +65,7 @@ class User(AbstractUser):
     )
     objects = MyUserManager()
     organization = models.ForeignKey("organization_management.Organization", null=True, blank=True, related_name="users", on_delete=models.CASCADE)
+
+
+class Account(User):
+    organizations = models.ManyToManyField(Organization)

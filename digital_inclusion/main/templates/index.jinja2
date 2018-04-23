@@ -1,95 +1,154 @@
 {% extends "base.jinja2" %}
 {% load static %}
+{% load staticfiles %}
+
+{% block imports %}
+    <script src="{% static 'moment.min.js' %}"></script>
+    <script src="{% static 'fullcalendar.js' %}"></script>
+{% endblock imports %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'fullcalendar.css' %}">
+    <style>
+        body {
+            margin: 40px 10px;
+            padding: 0;
+            font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+            font-size: 14px;
+        }
+
+        {##calendar {#}
+        {#    max-width: 900px;#}
+        {#    margin: 0 auto;#}
+        {#}#}
+    </style>
+{% endblock style %}
 {% block content %}
-<header>
-       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-         <ol class="carousel-indicators">
-           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-         </ol>
-         <div class="carousel-inner" role="listbox">
-           <!-- Slide One - Set the background image for this slide in the line below -->
-           <div class="carousel-item active" style="background-image: url({% static "images/austin.jpg" %})">
-             <div class="carousel-caption d-none d-md-block">
-               <h3>First Slide</h3>
-               <p>This is a description for the first slide.</p>
-             </div>
-           </div>
-           <!-- Slide Two - Set the background image for this slide in the line below -->
-           <div class="carousel-item" style="background-image: url({% static "images/pic2.jpg" %})">
-             <div class="carousel-caption d-none d-md-block">
-               <h3>Second Slide</h3>
-               <p>This is a description for the second slide.</p>
-             </div>
-           </div>
-           <!-- Slide Three - Set the background image for this slide in the line below -->
-           <div class="carousel-item" style="background-image: url({% static "images/pic3.jpg" %})">
-             <div class="carousel-caption d-none d-md-block">
-               <h3>Third Slide</h3>
-               <p>This is a description for the third slide.</p>
-             </div>
-           </div>
-         </div>
-         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-           <span class="sr-only">Previous</span>
-         </a>
-         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-           <span class="sr-only">Next</span>
-         </a>
-       </div>
-     </header>
 
-     <!-- Page Content -->
-     <div class="container">
+    <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item active" style="background-image: url({% static "images/austin.jpg" %})">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>First Slide</h3>
+                        <p>This is a description for the first slide.</p>
+                    </div>
+                </div>
+                <!-- Slide Two - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url({% static "images/pic2.jpg" %})">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Second Slide</h3>
+                        <p>This is a description for the second slide.</p>
+                    </div>
+                </div>
+                <!-- Slide Three - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url({% static "images/pic3.jpg" %})">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Third Slide</h3>
+                        <p>This is a description for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </header>
 
-       <div class="purpose-section">
-         <h1 class="my-4">Our Purpose</h1>
-         <p>
-           The Digital Empowerment Community of Austin (DECA) is a network of non-profits, educational instititions, and other stakeholders working together to improve our community's ability to participate in digital society, making a more digitally inclusive Austin.
-         </p>
+    <!-- Page Content -->
+    <div class="container">
 
-         <!-- Marketing Icons Section -->
-       </div>
+        <div class="purpose-section">
+            <h1 class="my-4">Our Purpose</h1>
+            <p>
+                The Digital Empowerment Community of Austin (DECA) is a network of non-profits, educational
+                instititions, and other stakeholders working together to improve our community's ability to participate
+                in digital society, making a more digitally inclusive Austin.
+            </p>
 
-       <!-- Portfolio Section -->
-       <div class="row">
-         <div class="col-lg-4 mb-4">
-           <div class="card h-100">
-             <h4 class="card-header card-center">Events</h4>
-             <div class="card-body">
-               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-             </div>
-             <div class="card-footer card-center">
-               <a href="#" class="btn card-button">Learn More</a>
-             </div>
-           </div>
-         </div>
-         <div class="col-lg-4 mb-4">
-           <div class="card h-100">
-             <h4 class="card-header card-center">Highlights</h4>
-             <div class="card-body">
-               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-             </div>
-             <div class="card-footer card-center">
-               <a href="#" class="btn card-button">Learn More</a>
-             </div>
-           </div>
-         </div>
-         <div class="col-lg-4 mb-4">
-           <div class="card h-100">
-             <h4 class="card-header card-center">Resources</h4>
-             <div class="card-body">
-               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-             </div>
-             <div class="card-footer card-center">
-               <a href="#" class="btn card-button">Learn More</a>
-             </div>
-           </div>
-         </div>
-       </div>
-       <!-- /.row -->
-     </div>
-    {% endblock %}
+            <!-- Marketing Icons Section -->
+        </div>
+
+        <!-- Portfolio Section -->
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <h4 class="card-header card-center">Events</h4>
+                    <div class="card-body">
+                        <div id='calendar'></div>
+                    </div>
+                    <div class="card-footer card-center">
+                        <a href="#" class="btn card-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <h4 class="card-header card-center">Highlights</h4>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam
+                            eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque
+                            exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                    </div>
+                    <div class="card-footer card-center">
+                        <a href="#" class="btn card-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <h4 class="card-header card-center">Resources</h4>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
+                            necessitatibus neque.</p>
+                    </div>
+                    <div class="card-footer card-center">
+                        <a href="#" class="btn card-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        var events = [
+            {% for event in events %}
+                {
+                    title: "{{ event.name}}",
+                    start: "{{ event.start_time|date:'Y-m-d H:m:s'}}",
+                    end: "{{ event.end_time |date:'Y-m-d H:m:s'}}",
+                    url: "{{ event.url }}"
+                },
+            {% endfor %}
+        ]
+        $(document).ready(function () {
+            var calendar = $('#calendar').fullCalendar({
+                defaultView: 'listMonth',
+                defaultDate: new Date().toISOString().split('T')[0],
+                navLinks: false, // can click day/week names to navigate views
+                editable: false,
+                eventLimit: true, // allow "more" link when too many events
+                events: events
+            });
+
+            calendar.on('dayClick', function(date, jsEvent, view) {
+                console.log('clicked on ' + date.format(), jsEvent, view);
+            });
+
+        });
+    </script>
+{% endblock scripts %}

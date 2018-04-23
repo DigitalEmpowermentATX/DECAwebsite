@@ -4,7 +4,9 @@ import django
 django.setup()
 
 
-from organization_management import models
+from organization_management.models import Organization
+from events.models import Event
 
+print(Organization.objects.filter(name__istartswith="a"))
+print(Event.objects.filter(name__istartswith="a"))
 
-print(models)

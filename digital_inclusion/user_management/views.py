@@ -1,8 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.views.decorators.http import require_http_methods
-# Create your views here.
-# @require_http_methods(['GET', 'POST'])
-# def login(request: HttpRequest):
-#     if request.method == 'GET':
 
+
+def register(request: HttpRequest):
+    pass
+
+
+def confirm(request: HttpRequest):
+    pass
+
+
+def forgot_password(request: HttpRequest):
+    pass
+
+
+def login(request: HttpRequest):
+    pass

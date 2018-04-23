@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
-from user_management.models import User
 
 class Service(models.Model):
     type = models.CharField(max_length=256)
@@ -12,7 +11,7 @@ class Service(models.Model):
 
 # Create your models here.
 class Organization(models.Model):
-    name = models.CharField(max_length=512)
+    name = models.CharField(max_length=512, db_index=True)
     description = models.TextField(max_length=2048)
     website = models.URLField(max_length=512)
     logo_file = models.ImageField(null=True, help_text="Must be smaller than 4MB.")
@@ -38,7 +37,7 @@ class Organization(models.Model):
 
 class Branch(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="branches")
-    contact_name = models.CharField(max_length=128)
+    contact_name = models.CharField(max_length=128, db_index=True)
     contact_phone = PhoneNumberField()
     contact_email = models.EmailField()
     key_employees = ArrayField(models.CharField(max_length=512), null=True, blank=True, help_text="Comma seperated list.")

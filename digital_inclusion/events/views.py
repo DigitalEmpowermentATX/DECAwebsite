@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from events.forms import EventInputForm
 from organization_management.models import Organization
+from events.models import Event
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 
@@ -12,7 +14,7 @@ def add(request):
         f = EventInputForm(request.POST)
         if f.is_valid():
             f.save()
-            return HttpResponse("Success!")
+            return HttpResponseRedirect("events:calendar")
     elif request.method == "GET":
         f = EventInputForm()
     return render(request,
@@ -21,4 +23,6 @@ def add(request):
 
 
 def calendar(request):
-    return HttpResponse("Events Page")
+    return render(request, template_name="calendar.jinja2", context={
+        "events": Event.objects.all()
+    })

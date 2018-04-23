@@ -99,6 +99,6 @@ ENV/
 .mypy_cache/
 
 components/
-static/*
+digital_inclusion.static/*
 public/*
 di-ve/
