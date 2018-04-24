@@ -3,7 +3,7 @@ from django.contrib.postgres.fields import ArrayField
 from django.core.validators import MinValueValidator
 from django.utils.translation import gettext as _
 from phonenumber_field.modelfields import PhoneNumberField
-from user_management.models import User
+# from user_management.models import User
 from ckeditor.fields import RichTextField
 
 

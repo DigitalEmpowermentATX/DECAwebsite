@@ -41,7 +41,6 @@
             ]
 
 
-            var markers = []
 
             var contentTemplate = "<div class='markerContent'>" +
                 "<h2 class='markerTitle'>{}</h2> " +
@@ -61,19 +60,17 @@
                 });
                 for (var i = 0; i < dat.length; i++) {
                     var org = dat[i];
-                    var infowindow = new google.maps.InfoWindow({
-                        content: contentTemplate.format(org["name"], org["description"], org["website"], org["id"], org["address"]),
-
-                    });
                     var marker = new google.maps.Marker({
                         position: {lat: org["lat"], lng: org["lng"]},
                         title: org["name"],
                         map: map
+                    })
+                    var markerContent = contentTemplate.format(org["name"], org["description"], org["website"], org["id"], org["address"]);
+                    google.maps.event.addListener(marker, 'click', function () {
+                        new google.maps.InfoWindow({
+                            content: markerContent,
+                        }).open(map, this);
                     });
-                    marker.addListener('click', function () {
-                        infowindow.open(map, marker);
-                    });
-                    markers.push(marker)
                 }
 
             }
