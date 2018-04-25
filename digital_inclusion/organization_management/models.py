@@ -19,8 +19,8 @@ class Service(models.Model):
 
 class Organization(models.Model):
     name = models.CharField(max_length=512)
-    description = RichTextField(max_length=2048)
-    website = models.URLField(max_length=512)
+    description = RichTextField(max_length=2048, null=True, blank=True)
+    website = models.URLField(max_length=512, null=True, blank=True)
     logo_file = models.ImageField(
         null=True, help_text="Must be smaller than 4MB.")
     banner = models.ImageField(
@@ -47,7 +47,7 @@ class Organization(models.Model):
 
 
 class Language(models.Model):
-    name = models.CharField(max_length=15)
+    name = models.CharField(max_length=15, db_index=True)
 
     def __str__(self):
         return self.name
@@ -64,8 +64,8 @@ class Branch(models.Model):
     organization = models.ForeignKey(
         Organization, on_delete=models.CASCADE, related_name="branches")
     contact_name = models.CharField(max_length=128)
-    contact_phone = PhoneNumberField()
-    contact_email = models.EmailField()
+    contact_phone = PhoneNumberField(blank=True, null=True)
+    contact_email = models.EmailField(blank=True, null=True)
     key_employees = ArrayField(models.CharField(
         max_length=512), null=True, blank=True, help_text="Comma seperated list.")
     address = models.CharField(max_length=512)

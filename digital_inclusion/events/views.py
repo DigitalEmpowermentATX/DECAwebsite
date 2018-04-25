@@ -16,7 +16,7 @@ def add(request):
         f = EventInputForm(request.POST)
         if f.is_valid():
             f.save()
-            return HttpResponseRedirect("events:calendar")
+            return HttpResponseRedirect("/events/")
     elif request.method == "GET":
         f = EventInputForm()
     return render(request,
