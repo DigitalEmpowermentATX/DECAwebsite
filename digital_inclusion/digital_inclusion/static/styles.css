@@ -140,7 +140,6 @@ button.search-button:hover {
 /*Purpose Section*/
 
 .purpose-section {
-  text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 30px;
@@ -312,4 +311,8 @@ hr {
   .report-button {
     margin-top: 0px;
   }
+}
+
+.modal-content {
+  text-align: left;
 }
