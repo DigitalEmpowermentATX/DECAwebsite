@@ -30,8 +30,8 @@ def get_coord(address):
 
 @require_GET
 def list_organization(request: HttpRequest):
-    organizations = Organization.objects.all()
-    context = {'organizations': organizations}
+    branches = Branch.objects.all()
+    context = {'branches': branches}
     return render(request=request, template_name="list_organizations.jinja2", context=context)
 
 

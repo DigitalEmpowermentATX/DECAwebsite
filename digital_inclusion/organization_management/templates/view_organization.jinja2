@@ -15,10 +15,12 @@
       <div class="card">
         <div class="card-header">
           <h5>
-            My Organization Name of Houston and Austin Area
+            {{organization.name}}
           </h5>
         </div>
+        {% if organization.logo_file %}
         <img class="card-img-top" src="/media/{{organization.logo_file}}" />
+        {% endif %}
         <div class="card-body">
           <div class="card-text">
             <dl>
@@ -33,6 +35,7 @@
               <dd>
                 <a href="{{organization.website}}" target="_blank">{{organization.website}}</a>
               </dd>
+              {% if branch.services.all or branch.services_other %}
               <dt>Services</dt>
               <dd>
                 <ul>
@@ -44,6 +47,7 @@
                   {% endfor %}
                 </ul>
               </dd>
+              {% endif %}
               <dt>Hours of operation</dt>
               <dd>50</dd>
               <dt>Languages</dt>
@@ -96,6 +100,7 @@
           {% endif %}
         </div>
         <div class="tab-pane" id="services" role="tabpanel" aria-labelledby="services-tab">
+          {% if branch.services.all or branch.services_other %}
           <h5>Services offered:</h5>
           <ul>
             {% for service in branch.services.all %}
@@ -105,6 +110,7 @@
             <li>{{service}}</li>
             {% endfor %}
           </ul>
+          {% endif %}
           {% if branch.training_programs.all %}
           <h5>Training programs offered:</h5>
           <ul>

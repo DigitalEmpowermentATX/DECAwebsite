@@ -15,7 +15,7 @@
                 <thead>
                   <tr>
                     <th>Organization</th>
-                    <th>Address</th>
+                    <th>Branch Address</th>
                     <th>Services Offered</th>
                     <th>Upcoming Event</th>
                     <th>Contact</th>
@@ -23,12 +23,12 @@
                 </thead>
                 
                 <tbody>
-                {% for organization in organizations %}
-                  <tr onclick="window.location='{{organization.pk}}/';">
-                    <td>{{organization.name}}</td>
-                    <td>{{organization.address}}</td>
+                {% for branch in branches %}
+                  <tr onclick="window.location='{{branch.pk}}/';">
+                    <td>{{branch.organization.name}}</td>
+                    <td>{{branch.address}}</td>
                     <td>
-                        {% for service in organization.services.all %}
+                        {% for service in branch.services.all %}
                             {% if forloop.last %}
                                 {{service.type}}
                             {% else %}
@@ -39,7 +39,7 @@
                         {% endfor %}
                     </td>
                     <td>No upcoming event</td>
-                    <td>{{organization.contact_phone.as_national}}</td>
+                    <td>{{branch.contact_phone.as_national}}</td>
                   </tr>                  
                 {% endfor %}
                 </tbody>
