@@ -1,8 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager, User
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 from organization_management.models import Organization
-
+from django.contrib.auth import get_user_model
 class MyUserManager(BaseUserManager):
     def create_user(self, username, password, **extra_fields):
         """
@@ -62,7 +62,11 @@ class User(AbstractUser):
         verbose_name='email address',
         max_length=255,
         unique=True,
+        default=None,
+        null=True,
     )
+    security_question = models.CharField(max_length=512, blank=False, help_text="A security question asked when resetting the password")
+    security_answer = models.CharField(max_length=512, blank=False, help_text="The answer to Security question, without this, you cannot reset your password")
     objects = MyUserManager()
     organization = models.ForeignKey("organization_management.Organization", null=True, blank=True, related_name="users", on_delete=models.CASCADE)
 

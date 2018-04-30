@@ -152,7 +152,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/media/')
 MEDIA_URL = '/media/'
 AUTH_USER_MODEL = "user_management.User"
-
+LOGIN_REDIRECT_URL = "index"
 # Custom Settings
 
 GOOGLE_MAPS_JS_API_KEY = "AIzaSyD4Gkn1pvJSIDhIzZSh_zFqlwbp0NMByA0"
