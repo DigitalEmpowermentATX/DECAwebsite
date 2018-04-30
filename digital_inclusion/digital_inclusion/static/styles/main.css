@@ -66,6 +66,14 @@ nav .nav-item a:hover {
   outline: 0;
 }
 
+.search-container .autocomplete {
+  background-color: #ffffff;
+}
+
+.autocomplete ul {
+  list-style-type: none;
+}
+  
 /*Login*/
 .organization-login {
   float: right;
