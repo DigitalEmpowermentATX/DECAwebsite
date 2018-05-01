@@ -2,6 +2,7 @@
     var events = [
         {% for event in events %}
             {
+                id: {{ event.id }},
                 title: "{{ event.name}}",
                 start: "{{ event.start_time|date:'Y-m-d H:m:s'}}",
                 end: "{{ event.end_time |date:'Y-m-d H:m:s'}}",
@@ -41,9 +42,10 @@
                 // change the border color just for fun
                 {#$(this).css('border-color', 'red');#}
                 jsEvent.preventDefault()
-                console.log(calEvent)
                 if (typeof calEvent.url != 'undefined' && calEvent.url != "None") {
                     window.open(calEvent.url, "_blank")
+                }else{
+                    window.open("/events/"+calEvent.id+"/", "_self")
                 }
             }
         });

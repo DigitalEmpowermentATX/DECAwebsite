@@ -30,6 +30,14 @@ class OpeningHoursForm(forms.ModelForm):
         model = OpeningHours
         fields = ['weekday', 'from_hour', 'to_hour']
 
+class UserInputForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self.data = kwargs.get("data", {"emails[]": []})
+        if type(self.data) is list:
+            self.emails = self.data.get("emails[]", [])
+        return super().__init__(*args, **kwargs)
+
+
 HoursFormset = inlineformset_factory(Branch, OpeningHours, form=OpeningHoursForm, extra=1)
 class AddOrganizationForm(forms.ModelForm):
     # def clean_contact_phone(self):
