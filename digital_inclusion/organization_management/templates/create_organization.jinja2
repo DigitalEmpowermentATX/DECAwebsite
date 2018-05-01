@@ -31,13 +31,13 @@
 
     </form>
     <script type="text/javascript">
-        $('#registerForm input:checkbox').change(function() {
-            if (this.checked){
-                $("#submitBtn").text('Next Step');
-            }
-            else{
-                $("#submitBtn").text('Submit');
-            }
+        {#$('#registerForm input:checkbox').change(function() {#}
+        {#    if (this.checked){#}
+        {#        $("#submitBtn").text('Next Step');#}
+        {#    }#}
+        {#    else{#}
+        {#        $("#submitBtn").text('Submit');#}
+        {#    }#}
         }).change();
         $('#div_id_{{wizard.steps.step0}}-lab_machine_count').hide();
         $('#id_{{wizard.steps.step0}}-services').on('changed.bs.select', function(event, clickedIndex, newValue, oldValue){            

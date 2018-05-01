@@ -1,3 +1,6 @@
+import random
+import string
+
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from django.core.validators import MinValueValidator
@@ -115,3 +118,13 @@ class OpeningHours(models.Model):
     def __str__(self):
         return '%s on %s: %s - %s' % (self.branch, self.get_weekday_display(),
                                  self.from_hour, self.to_hour)
+
+
+class ActivationToken(models.Model):
+    token = models.CharField(max_length=256, primary_key=True)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    valid = models.BooleanField(default=True)
+    @classmethod
+    def for_organization(cls, organization):
+        return cls(organization=organization,
+                   token="".join(random.choice(string.ascii_lowercase) for _ in range(256)))

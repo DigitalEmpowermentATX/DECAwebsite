@@ -274,3 +274,8 @@ button.search-button:hover {
   display:none;
   top:45px;
 }
+
+#myTable_wrapper tr td:nth-child(1){
+  cursor: pointer;
+  color: #538cff;
+}
