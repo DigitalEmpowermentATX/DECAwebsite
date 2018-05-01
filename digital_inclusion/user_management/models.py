@@ -65,8 +65,8 @@ class User(AbstractUser):
         default=None,
         null=True,
     )
-    security_question = models.CharField(max_length=512, blank=False, help_text="A security question asked when resetting the password")
-    security_answer = models.CharField(max_length=512, blank=False, help_text="The answer to Security question, without this, you cannot reset your password")
+    security_question = models.CharField(max_length=512, blank=True, null=True, help_text="A security question asked when resetting the password")
+    security_answer = models.CharField(max_length=512, blank=True, null=True, help_text="The answer to Security question, without this, you cannot reset your password")
     objects = MyUserManager()
     organization = models.ForeignKey("organization_management.Organization", null=True, blank=True, related_name="users", on_delete=models.CASCADE)
 

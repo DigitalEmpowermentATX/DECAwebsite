@@ -153,6 +153,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'public/uploads/media/')
 MEDIA_URL = '/media/'
 AUTH_USER_MODEL = "user_management.User"
 LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
+
+#Email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get('EMAIL_SMTP_HOST', None)
+EMAIL_PORT = os.environ.get('EMAIL_SMTP_TLS_PORT', None)
+EMAIL_HOST_USER = os.environ.get('EMAIL_SMTP_USERNAME', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_SMTP_PASSWORD', None)
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_SMTP_FROM_EMAIL', None)
+
 # Custom Settings
 
 GOOGLE_MAPS_JS_API_KEY = "AIzaSyD4Gkn1pvJSIDhIzZSh_zFqlwbp0NMByA0"
