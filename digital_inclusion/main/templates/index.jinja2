@@ -71,13 +71,9 @@
     <div class="container">
 
         <div class="purpose-section">
-            <h1 class="my-4">Our Purpose</h1>
-            <p>
-                The Digital Empowerment Community of Austin (DECA) is a network of non-profits, educational
-                instititions, and other stakeholders working together to improve our community's ability to participate
-                in digital society, making a more digitally inclusive Austin.
-            </p>
-
+            <div class="my-4">
+                {{ content.text |safe }}
+            </div>
             <!-- Marketing Icons Section -->
         </div>
 
@@ -98,9 +94,7 @@
                 <div class="card h-100">
                     <h4 class="card-header card-center">Highlights</h4>
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam
-                            eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque
-                            exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                        {{ highlights.text |safe }}
                     </div>
                     <div class="card-footer card-center">
                         <a href="#" class="btn card-button">Learn More</a>
@@ -111,8 +105,7 @@
                 <div class="card h-100">
                     <h4 class="card-header card-center">Resources</h4>
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse
-                            necessitatibus neque.</p>
+                        {{ resources.text |safe }}
                     </div>
                     <div class="card-footer card-center">
                         <a href="#" class="btn card-button">Learn More</a>
