@@ -50,6 +50,7 @@
               {% endif %}
               <dt>Hours of operation</dt>
               <dd>50</dd>
+              {% if branch.languages.all %}
               <dt>Languages</dt>
               <dd>
                 <ul>
@@ -58,6 +59,7 @@
                   {% endfor %}
                 </ul>
               </dd>
+              {% endif %}
               
             </dl>
             <h7>
@@ -75,7 +77,7 @@
         {% if branch.training_programs.all or branch.services.all or branch.services_other or branch.lab_machine_count %}        
         <li class="nav-item"><a href="#services" role="tab" data-toggle="tab" aria-controls="services" aria-selected="false" class="nav-link">Services</a></li>
         {% endif %}
-        <li class="nav-item"><a href="#disability" role="tab" data-toggle="tab" aria-controls="disability" aria-selected="false" class="nav-link">Disability</a></li>
+        <!-- <li class="nav-item"><a href="#disability" role="tab" data-toggle="tab" aria-controls="disability" aria-selected="false" class="nav-link">Disability</a></li> -->
         <li class="nav-item"><a href="#other" role="tab" data-toggle="tab" aria-controls="other" aria-selected="false" class="nav-link">Other Branches</a></li>
       </ul>
       <div class="tab-content pt-3" id="myTabContent">
@@ -130,10 +132,18 @@
           {% endif %}
           
         </div>
-        <div class="tab-pane" id="disability" role="tabpanel" aria-labelledby="disability-tab">
+        <!-- <div class="tab-pane" id="disability" role="tabpanel" aria-labelledby="disability-tab">
           
+        </div> -->
+        <div class="tab-pane" id="other" role="tabpanel" aria-labelledby="other-tab">
+          {% for other_branch in organization.branches.all %}
+            {% if other_branch != branch %}
+              <div>
+                <a href="{% url 'orgs:view' other_branch.pk %}">{{other_branch.address}}</a>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
-        <div class="tab-pane" id="other" role="tabpanel" aria-labelledby="other-tab">...</div>
       </div>
     </div>
     

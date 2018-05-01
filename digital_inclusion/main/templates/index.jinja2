@@ -29,7 +29,7 @@
 
     <header>
 
-        {% if featured_orgs %}
+        {% if featured_orgs.all %}
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 {% for org in featured_orgs.all %}
