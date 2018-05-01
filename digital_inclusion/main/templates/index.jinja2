@@ -50,7 +50,9 @@
                     {% endif %}
                         <div class="carousel-caption d-none d-md-block">
                             <h3>{{org.name}}</h3>
+                            {% if org.branches.first %}
                             <a class="btn btn-info" href="{% url 'orgs:view' org.branches.first.pk %}">Visit Showcase</a>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
