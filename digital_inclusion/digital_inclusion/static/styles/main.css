@@ -148,8 +148,7 @@ button.search-button:hover {
 
 /*Purpose Section*/
 
-.purpose-section {
-  text-align: center;
+.purpose-section {  
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 30px;
@@ -157,6 +156,9 @@ button.search-button:hover {
   color: #003a5c;
 }
 
+.modal-content {
+  text-align: left;
+}
 .purpose-section p {
   font-size: 20px;
   color: #003a5c;

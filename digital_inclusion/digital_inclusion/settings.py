@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET', '8a!*u9-u%^q96g@#si_v#q)t097r$i20pp
 if not os.environ.get('PROD', None):
     DEBUG = True
 
-ALLOWED_HOSTS = ['django.local', 'django.dry', 'deca.nanoapp.io', '172.21.0.2']
+ALLOWED_HOSTS = ['django.local', 'django.dry', 'deca.nanoapp.io', 'resource.digitalatx.org', '172.21.0.2']
 
 # Application definition
 
