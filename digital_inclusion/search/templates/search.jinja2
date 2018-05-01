@@ -9,7 +9,22 @@
 {% load widget_tweaks %}
 {% load static %}
 {% block content %}
+    <ul id="search_results" class="paginate" style="list-style-type:none">
+        {% for org in org_results %}
+            <li>
+                {{org.name}}
+            </li>
+        {% endfor %}
+    </ul>
 
+    <hr>
+    <ul id="search_results2" class="paginate" style="list-style-type:none">
+        {% for event in event_results %}
+            <li>
+                {{event.name}}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock content %}
 
 {% block scripts %}

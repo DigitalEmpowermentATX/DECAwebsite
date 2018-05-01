@@ -24,11 +24,16 @@ def add(request):
                   context={"form": f})
 
 
-def calendar(request):
+def calendar(request, pk=None):
+    event = None
+    if pk:
+        event = Event.objects.get(id=int(pk))
+    print(pk, event)
     return render(request, template_name="calendar.jinja2", context={
         "events": Event.objects.all(),
         "event_widget_options": {
             "show_header": True,
             # "default_view": "listMonth"
-        }
+        },
+        "event": event
     })
