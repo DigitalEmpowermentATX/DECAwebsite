@@ -7,12 +7,14 @@ from events.models import Event
 
 # Create your views here.
 def index(request: HttpRequest):
+    featured_orgs = Organization.objects.exclude(banner__isnull=True).exclude(banner__exact="").order_by("?")[:3]
     return render(request, template_name="index.jinja2",context={
         "events": Event.objects.all(),
         "event_widget_options": {
             "show_header": False,
             "default_view": "listMonth"
-        }
+        },
+        "featured_orgs": featured_orgs
     })
 
 def about(request: HttpRequest):
