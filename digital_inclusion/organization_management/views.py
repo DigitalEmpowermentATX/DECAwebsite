@@ -69,7 +69,7 @@ class OrganizationWizard(LoginRequiredMixin, SessionWizardView):
                 branch.longitude = lng
                 branch.save()
                 form.save_m2m()
-        return redirect('orgs:view', pk=organization.pk)
+        return redirect('orgs:view', pk=branch.pk)
 
 
 def view_organization(request: HttpRequest, pk=None):
