@@ -38,7 +38,12 @@
                             None
                         {% endfor %}
                     </td>
-                    <td>No upcoming event</td>
+{#                    {% if branch.organization.events %}#}
+{#                      <td>{{ branch.organization.events }}</td>#}
+{#                    {% else %}#}
+{#                        <td>No upcoming events</td>#}
+{#                    {% endif %}#}
+                      <td>No upcoming events</td>
                     <td>{{branch.contact_phone.as_national}}</td>
                   </tr>                  
                 {% endfor %}

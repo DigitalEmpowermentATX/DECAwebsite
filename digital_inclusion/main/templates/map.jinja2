@@ -112,7 +112,12 @@
                         title: org["name"],
                         map: map
                     })
-                    var markerContent = contentTemplate.format(org["name"], org["description"], org["website"], org["id"], org["address"]);
+                    var markerContent = contentTemplate.format(
+                        (org["name"] && org["name"] != "None") ? org["name"] : "" ,
+                        (org["description"] && org["description"] != "None") ? org["description"] : "" ,
+                        (org["website"] && org["website"] != "None") ? org["website"] : "#",
+                        org["id"],
+                        org["address"]);
                     marker['infowindow'] = new google.maps.InfoWindow({
                         content: markerContent
                     });

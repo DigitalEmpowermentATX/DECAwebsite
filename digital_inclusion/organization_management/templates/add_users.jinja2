@@ -1,0 +1,150 @@
+{% extends "base.jinja2" %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block style %}
+    <style>
+        #user_add_form {
+            margin-top: 100px;
+            clear: both;
+        }
+        #emailInput{
+
+        }
+        #emailInput input{
+            float:left;
+        }
+        #emailInput button{
+            float:left;
+        }
+    </style>
+{% endblock style %}
+{% block content %}
+
+    <div class="container">
+        <h1 class="formtitle">Invite Users</h1>
+        {% if errors %}
+            <h3 class="errors">
+                {{ errors }}
+            </h3>
+        {% endif %}
+        <div>
+            <button id="add_user" class="mr-3 btn btn-primary pull-right btn-lg">Add user</button>
+            <label for="csv_file">Upload CSV: </label>
+            <input id="csv_file" name="csv_file" type="file" value="Upload CSV" accept=".csv"/>
+        </div>
+        <form id="user_add_form" action="{% url "orgs:wizard" %}" method="POST">
+            {% csrf_token %}
+            {{ wizard.management_form }}
+            <div class="inputs">
+                <div class="form-group row">
+                    <div class="col-sm-2 col-form-label">
+                        <label for="emails[]">User Email:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" name="emails[]" class="form-control">
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn-secondary btn-sm deleteRow">X</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-end" style="text-align:center">
+                <div class="col-sm-10">
+                    <button type="submit" class="form-control btn deca-register deca-light-button">Submit</button>
+                </div>
+            </div>
+        </form>
+{#        <button type="submit" id="submitBtn" class="form-control btn btn-block deca-register deca-light-button">Next#}
+{#            Step#}
+{#        </button>#}
+
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        function parseCSV(str) {
+            var arr = [];
+            var quote = false;  // true means we're inside a quoted field
+
+            // iterate over each character, keep track of current row and column (of the returned array)
+            for (var row = col = c = 0; c < str.length; c++) {
+                var cc = str[c], nc = str[c+1];        // current character, next character
+                arr[row] = arr[row] || [];             // create a new row if necessary
+                arr[row][col] = arr[row][col] || '';   // create a new column (start with empty string) if necessary
+
+                // If the current character is a quotation mark, and we're inside a
+                // quoted field, and the next character is also a quotation mark,
+                // add a quotation mark to the current column and skip the next character
+                if (cc == '"' && quote && nc == '"') { arr[row][col] += cc; ++c; continue; }
+
+                // If it's just one quotation mark, begin/end quoted field
+                if (cc == '"') { quote = !quote; continue; }
+
+                // If it's a comma and we're not in a quoted field, move on to the next column
+                if (cc == ',' && !quote) { ++col; continue; }
+
+                // If it's a newline (CRLF) and we're not in a quoted field, skip the next character
+                // and move on to the next row and move to column 0 of that new row
+                if (cc == '\r' && nc == '\n' && !quote) { ++row; col = 0; ++c; continue; }
+
+                // If it's a newline (LF or CR) and we're not in a quoted field,
+                // move on to the next row and move to column 0 of that new row
+                if (cc == '\n' && !quote) { ++row; col = 0; continue; }
+                if (cc == '\r' && !quote) { ++row; col = 0; continue; }
+
+                // Otherwise, append the current character to the current column
+                arr[row][col] += cc;
+            }
+            return arr;
+        }
+    </script>
+    <script>
+        String.prototype.format = function () {
+            var i = 0, args = arguments;
+            return this.replace(/{}/g, function () {
+                return typeof args[i] != 'undefined' ? args[i++] : '';
+            });
+        };
+        var userTemplate = "<div class=\"form-group row\">\n" +
+            "                <div class=\"col-sm-2 col-form-label\">\n" +
+            "                    <label for=\"emails[]\">User Email:</label>\n" +
+            "                </div>\n" +
+            "                <div class=\"col-sm-9\">\n" +
+            "                    <input type=\"text\" name=\"emails[]\" class=\"form-control\" value=\"{}\">\n" +
+            "                </div>\n" +
+            "                <div class=\"col-sm-1\">\n" +
+            "                    <button type=\"button\" class=\"btn-secondary btn-sm deleteRow\">X</button>\n" +
+            "                </div>\n" +
+            "            </div>"
+        $("#add_user").click(function () {
+            $("#user_add_form").append(userTemplate.format(""));
+        })
+        $('#csv_file').on('change', function () {
+            var fileReader = new FileReader();
+            fileReader.onload = function () {
+                try{
+                    var data = fileReader.result;
+                    var parsedCSV = parseCSV(data);
+                    for(var i = 0; i < parsedCSV.length; i++){
+                        $("#user_add_form").append(userTemplate.format(parsedCSV[i][0]));
+                    }
+                }catch (e) {
+                    console.log("file could not be parsed")
+                }
+
+            };
+            fileReader.readAsText($('#csv_file').prop('files')[0]);
+        });
+        $("#user_add_form").on("click", ".deleteRow",function(e){
+            var $this = $(this);
+            var parent = $this.parent().parent();
+            parent.remove()
+        })
+    </script>
+{% endblock scripts %}
+

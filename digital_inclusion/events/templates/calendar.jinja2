@@ -33,9 +33,53 @@
         <a href="{% url 'events:add_event' %}" class="btn btn-info" role="button" id="add_event_btn">Add Event</a>
     {% endif %}
     <div id='calendar'></div>
-
+    <div class="report-button">
+        <!-- Modal -->
+        <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="eventLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="eventLabel" center>{{event_name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            {{description}}
+                        </p>
+                        <p>
+                            <span style="font-weight: bold">Organization:</span> {{event.organization.name}}
+                        </p>
+                        <p>
+                            <span style="font-weight: bold">Name:</span> {{event.name}}
+                        </p>
+                        <p>
+                            <span style="font-weight: bold">Description:</span> {{event.description}}
+                        </p>
+                        <p>
+                            <span style="font-weight: bold">Contact:</span> {{event.contact_name}}
+                        </p>
+                        <p>
+                            <span style="font-weight: bold">Event Date:</span> {{ event.start_time|date:"M d P" }}
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn deca-remove-button" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
 
 {% block scripts %}
     {% include 'event_widget.js.jinja2' %}
+    <script>
+        {% if event %}
+        $(window).on('load',function(){
+            $('#report').modal('show');
+        });
+        {% endif %}
+    </script>
 {% endblock scripts %}
