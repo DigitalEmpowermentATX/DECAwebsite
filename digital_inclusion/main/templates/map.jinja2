@@ -1,0 +1,133 @@
+{% extends "base.jinja2" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <style>
+            #map {
+                height: 80vh;
+                width: 100%;
+            }
+        </style>
+
+        <div id="map"></div>
+        <script>
+            var map, infoWindow;
+            String.prototype.format = function () {
+                var i = 0, args = arguments;
+                return this.replace(/{}/g, function () {
+                    return typeof args[i] != 'undefined' ? args[i++] : '';
+                });
+            };
+            var dat = [
+                {% for org in orgs %}
+                    {
+                        id: "{{ org.id }}",
+                        name: "{{ org.organization.name }}",
+                        description: "{{ org.organization.description }}",
+                        address: "{{ org.address }}",
+                        website: "{{ org.organization.website }}",
+                        {% if org.latitude is not none %}
+                            lat: {{ org.latitude}},
+                        {% else %}
+                            lat: null,
+                        {% endif %}
+                        {% if org.longitude is not none %}
+                            lng: {{ org.longitude}},
+                        {% else %}
+                            lng: null,
+                        {% endif %}
+                    },
+                {% endfor %}
+            ]
+
+
+            var contentTemplate = "<div class='markerContent'>" +
+                "<h2 class='markerTitle'>{}</h2> " +
+                "<p class='markerDescription'>{}</p> " +
+                "<a class='websiteMarker' href='{}' target='_blank'>Website</a>" +
+                "<br>" +
+                "<a class='profileMarker' href='/org/{}/' target='_blank'>Showcase</a>" +
+                "<br>" +
+                "<a href='https://www.google.com/maps?q={}' target='_blank'>Directions</a></div>";
+
+            function initMap() {
+                var atx = {lat: 30.267, lng: -97.743};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12,
+                    center: atx,
+                    styles: [{
+                        "featureType": "all",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"color": "#ffffff"}]
+                    }, {
+                        "featureType": "all",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [{"color": "#000000"}, {"lightness": 13}]
+                    }, {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#000000"}]
+                    }, {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#144b53"}, {"lightness": 14}, {"weight": 1.4}]
+                    }, {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [{"color": "#08304b"}]
+                    }, {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#0c4152"}, {"lightness": 5}]
+                    }, {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#000000"}]
+                    }, {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#0b434f"}, {"lightness": 25}]
+                    }, {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#000000"}]
+                    }, {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#0b3d51"}, {"lightness": 16}]
+                    }, {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#000000"}]
+                    }, {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [{"color": "#146474"}]
+                    }, {"featureType": "water", "elementType": "all", "stylers": [{"color": "#021019"}]}]
+                });
+                for (var i = 0; i < dat.length; i++) {
+                    var org = dat[i];
+                    var marker = new google.maps.Marker({
+                        position: {lat: org["lat"], lng: org["lng"]},
+                        title: org["name"],
+                        map: map
+                    })
+                    var markerContent = contentTemplate.format(org["name"], org["description"], org["website"], org["id"], org["address"]);
+                    marker['infowindow'] = new google.maps.InfoWindow({
+                        content: markerContent
+                    });
+                    google.maps.event.addListener(marker, 'click', function () {
+                        this['infowindow'].open(map, this);
+                    });
+                }
+
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ gmaps_api_key }}&callback=initMap">
+        </script>
+
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}

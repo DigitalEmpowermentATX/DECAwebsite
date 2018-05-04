@@ -1,7 +1,11 @@
-{% extends "base.jinja2" %}
-{% load static %}
+{% extends "base.jinja2" %} {% load static %} {% block title %}DECA - About{% endblock %} {% block content %}
+<div class="container">
 
-{% block title %}DECA - About{% endblock %}
-{% block content %}
-About page!
+    <div class="purpose-section">
+        <div class="my-4">
+            {{ content.text |safe }}
+        </div>
+    </div>
+
+</div>
 {% endblock %}
