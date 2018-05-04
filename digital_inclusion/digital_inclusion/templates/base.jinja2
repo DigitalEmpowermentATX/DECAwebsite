@@ -1,0 +1,122 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static "styles/main.css" %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.0-beta/css/bootstrap-select.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" media="screen">
+    <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.0-beta/js/bootstrap-select.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+	<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    {% block imports %} {% endblock imports %}
+  <title>{% block title %}DECA{% endblock %}</title>
+    {% block style %} {% endblock style %}
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg extra-margin">
+    <div class="row input-group">
+      <div class="col-md-4">
+        <a href="{% url 'index' %}">
+          <img class="banner-img" src="{% static "images/banner_1024.png" %}" />
+        </a>
+      </div>
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <div class="search-container">
+          <input type="text" class="search-box" placeholder="Search...">
+          <button class="btn-outline-secondary search-button" type="button">
+            <a class="fa fa-search"></a>
+          </button>
+            <div class="autocomplete">
+                <ul>
+                    <li>Option1</li>
+                    <li>Option2</li>
+                    <li>Option3</li>
+                    <li>Option4</li>
+                </ul>
+            </div>
+        </div>
+        <div class="organization-login">
+          {% if request.user.is_authenticated %}
+          <span>Welcome {{request.user.username}}! <a href="{% url 'logout' %}">logout</a></span>
+          {% else %}
+          <a class="nav-link" href="{% url 'login' %}">Log In</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg" style="background-color:#003a5c;">
+    <ul class="nav navbar-nav mx-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'orgs:index' %}">Organizations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'map' %}">Map</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'events:calendar' %}">Calendar</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    {% block content %}{% endblock %}
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Digital Empowerment Community of Austin 2018.</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+    {% block scripts %}
+    {% endblock scripts %}
+  <script>
+      var isDown = false;
+
+      $(".search-box").on("keyup", function(){
+          if (!isDown){
+              $(".autocomplete").slideDown({duration: 200});
+              isDown = true
+          }
+          $(".autocomplete").load("/search/autocomplete?query=" + encodeURIComponent($(this).val()))
+      })
+      $(".search-box").on("blur", function(){
+          $(".autocomplete").slideUp({duration: 200});
+          isDown = false
+      })
+      $(".search-button").click(function(){
+          window.open("/search?query=" + encodeURIComponent($(".search-box").val()))
+      })
+  </script>
+</body>
+
+</html>

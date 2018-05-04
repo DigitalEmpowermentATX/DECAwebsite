@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "${workspaceFolder}\\di-ve\\Scripts\\python.exe",
+    "python.venvPath": "${workspaceFolder}\\di-ve\\",
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint_django",
+        "--max-line-length=120"
+    ],
+    "files.associations": {
+        "*.jinja2": "html"
+    }
+}

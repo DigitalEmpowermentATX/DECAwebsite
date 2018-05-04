@@ -1,0 +1,219 @@
+{% extends "base.jinja2" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block imports %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+{% endblock imports %}
+{% block style %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{% static 'jquery.datetimepicker.css' %}">
+{% endblock style %}
+{% block content %}
+    <div class="container">
+        <h1 class="formtitle">Add an Event</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.organization.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.organization class+="form-control" %}
+                </div>
+                {% if form.organization.help_text %}
+                    <small class="form-text text-muted">{{ form.organization.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.organization.errors %}
+                    {% for error in form.organization.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.name.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.name class+="form-control" %}
+                </div>
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">{{ form.name.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.name.errors %}
+                    {% for error in form.name.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.start_time.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.start_time class+="form-control" %}
+                </div>
+                {% if form.start_time.help_text %}
+                    <small class="form-text text-muted">{{ form.start_time.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.start_time.errors %}
+                    {% for error in form.start_time.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.end_time.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.end_time class+="form-control" %}
+                </div>
+                {% if form.end_time.help_text %}
+                    <small class="form-text text-muted">{{ form.end_time.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.end_time.errors %}
+                    {% for error in form.end_time.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.description.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.description class+="form-control" %}
+                </div>
+                {% if form.description.help_text %}
+                    <small class="form-text text-muted">{{ form.description.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.description.errors %}
+                    {% for error in form.description.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.mask_profile.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.mask_profile class+="form-control" %}
+                </div>
+                {% if form.mask_profile.help_text %}
+                    <small class="form-text text-muted">{{ form.mask_profile.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.mask_profile.errors %}
+                    {% for error in form.mask_profile.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.contact_name.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.contact_name class+="form-control" %}
+                </div>
+                {% if form.contact_name.help_text %}
+                    <small class="form-text text-muted">{{ form.contact_name.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.contact_name.errors %}
+                    {% for error in form.contact_name.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 col-form-label">
+                    {{ form.url.label_tag }}
+                </div>
+                <div class="col-sm-10">
+                    {% render_field form.url class+="form-control" %}
+                </div>
+                {% if form.contact_name.help_text %}
+                    <small class="form-text text-muted">{{ form.url.help_text }}</small>
+                {% endif %}
+            </div>
+            <div class="row justify-content-end">
+                {% if form.url.errors %}
+                    {% for error in form.url.errors %}
+                        <div class="col-sm-10">
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="row justify-content-end" style="text-align:center">
+                <div class="col-sm-10">
+                    <button type="submit" class="form-control btn deca-register deca-light-button">Register</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        {#$("#id_start_time").datepicker("option", "dateFormat", "'yyy-dd-mm HH:MM:ss");#}
+        {#$("#id_end_time").datepicker("option", "dateFormat", "'yyy-dd-mm HH:MM:ss");        #}
+        $("#id_start_time").datetimepicker({
+            step:15,
+            format:'Y-m-d H:m:s'
+            {#inline:true#}
+        });
+        $("#id_end_time").datetimepicker({
+            step:15,
+            format:'Y-m-d H:m:s'
+            {#inline:true#}
+        });
+    </script>
+{% endblock scripts %}
